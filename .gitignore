@@ -1,0 +1,6 @@
+
+#ignoring the build directory
+/build
+
+#ignoring the libs directory
+/libs
