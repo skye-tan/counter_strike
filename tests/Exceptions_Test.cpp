@@ -11,6 +11,7 @@
 #include "Invalid_UserName_Exception.h"
 #include "Invalid_GunName_Exception.h"
 #include "Invalid_GunCategory_Exception.h"
+#include "Duplicate_Attribute_Exception.h"
 #include "gtest/gtest.h"
 
 TEST(Exceptions, Custom) {
@@ -117,6 +118,15 @@ TEST(Exceptions, Invalid_GunCategory) {
     Invalid_GunCategory_Exception test_exception;
 
     EXPECT_EQ(test_exception.what(), "invalid category gun");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Duplicate_Attribute) {
+
+    Duplicate_Attribute_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "duplicate attribute");
     EXPECT_EQ(0, 0) << test_exception;
 
 }
