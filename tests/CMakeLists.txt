@@ -37,13 +37,13 @@ endif()
 
 if(${exception_lib_test})
 
-    add_executable(CustomExceptionTEST Custom_Exception_Test.cpp)
-    target_link_libraries(CustomExceptionTEST
+    add_executable(ExceptionsTEST Exceptions_Test.cpp)
+    target_link_libraries(ExceptionsTEST
        gtest gtest_main exception_lib
     )
 
     add_test(test_exception
-            CustomExceptionTEST
+            ExceptionsTEST
     )
 
 endif()
