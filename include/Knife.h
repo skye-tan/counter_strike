@@ -15,6 +15,8 @@
  */
 class Knife : public Weapon {
 
+public:
+
     /**
      * @brief Construct a new Pistol object
      */

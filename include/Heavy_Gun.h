@@ -14,6 +14,8 @@
  */
 class Heavy_Gun : public Weapon {
     
+public:
+
     /**
      * @brief Construct a new Pistol object
      * 
