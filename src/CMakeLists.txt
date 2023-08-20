@@ -12,4 +12,5 @@ add_library(exception_lib
             Insufficient_Money_Exception.cpp
             Full_Team_Exception.cpp
             Friendly_Fire_Exception.cpp
+            Dead_Player_Exception.cpp
 )
