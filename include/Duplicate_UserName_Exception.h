@@ -15,7 +15,6 @@ public:
     /**
      * @brief Construct a new Duplicate_UserName_Exception object
      * 
-     * @param input_msg the excpetion's message
      */
     Duplicate_UserName_Exception();
 

@@ -2,7 +2,7 @@
 #include "Dead_Player_Exception.h"
 
 #ifndef DEAD_BUYER_EXCEPTION_H
-#define DEAD_BUYEREXCEPTION_H
+#define DEAD_BUYER_EXCEPTION_H
 
 /**
  * @brief Exception for when a dead player tries to buy something
