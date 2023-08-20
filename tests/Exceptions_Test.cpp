@@ -7,6 +7,7 @@
 #include "Dead_Buyer_Exception.h"
 #include "Dead_Attacker_Exception.h"
 #include "Dead_Attacked_Exception.h"
+#include "Invalid_Attribute_Exception.h"
 #include "gtest/gtest.h"
 
 TEST(Exceptions, Custom) {
@@ -77,6 +78,15 @@ TEST(Exceptions, Dead_Attacked) {
     Dead_Attacked_Exception test_exception;
 
     EXPECT_EQ(test_exception.what(), "attacked is dead");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Invalid_Attribute) {
+
+    Invalid_Attribute_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "invalid attribute");
     EXPECT_EQ(0, 0) << test_exception;
 
 }
