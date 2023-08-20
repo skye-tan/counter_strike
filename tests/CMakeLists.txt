@@ -3,7 +3,7 @@ if(${weapon_lib_test})
 
     add_executable(WeaponBundleTEST Weapon_Bundle_Test.cpp)
     target_link_libraries(WeaponBundleTEST
-      gtest gtest_main weapon_lib
+      gtest gtest_main weapon_lib exception_lib
     )
 
     add_executable(WeaponTEST Weapon_Test.cpp)
