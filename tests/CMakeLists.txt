@@ -1,4 +1,10 @@
 ﻿
+add_executable(WeaponBundleTEST Weapon_Bundle_Test.cpp)
+
+target_link_libraries(WeaponBundleTEST
+    gtest gtest_main weapon_lib
+)
+
 add_executable(WeaponTEST Weapon_Test.cpp)
 
 target_link_libraries(WeaponTEST
