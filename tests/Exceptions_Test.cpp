@@ -16,6 +16,7 @@
 #include "Duplicate_WeaponType_Exception.h"
 #include "Duplicate_Heavy_Gun_Exception.h"
 #include "Duplicate_Pistol_Exception.h"
+#include "Out_Of_Time_Exception.h"
 #include "gtest/gtest.h"
 
 TEST(Exceptions, Custom) {
@@ -167,6 +168,15 @@ TEST(Exceptions, Duplicate_Pistol) {
     Duplicate_Pistol_Exception test_exception;
 
     EXPECT_EQ(test_exception.what(), "you have a pistol");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Out_Of_Time) {
+
+    Out_Of_Time_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "you are out of time");
     EXPECT_EQ(0, 0) << test_exception;
 
 }
