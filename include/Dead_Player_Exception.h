@@ -17,7 +17,7 @@ public:
      * 
      * @param input_msg the excpetion's message
      */
-    Dead_Player_Exception(std::string input_msg);
+    Dead_Player_Exception(std::string input_msg = "player is dead");
 
 };
 

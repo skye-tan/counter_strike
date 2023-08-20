@@ -21,7 +21,7 @@ public:
      * 
      * @param input_msg the excpetion's message
      */
-    Custom_Exception(std::string input_msg);
+    Custom_Exception(std::string input_msg = "exception happened");
 
     /**
      * @brief Return the exception's message
