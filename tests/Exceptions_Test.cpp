@@ -12,6 +12,8 @@
 #include "Invalid_GunName_Exception.h"
 #include "Invalid_GunCategory_Exception.h"
 #include "Duplicate_Attribute_Exception.h"
+#include "Duplicate_UserName_Exception.h"
+#include "Duplicate_WeaponType_Exception.h"
 #include "gtest/gtest.h"
 
 TEST(Exceptions, Custom) {
@@ -127,6 +129,24 @@ TEST(Exceptions, Duplicate_Attribute) {
     Duplicate_Attribute_Exception test_exception;
 
     EXPECT_EQ(test_exception.what(), "duplicate attribute");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Duplicate_UserName) {
+
+    Duplicate_UserName_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "you are already in this game");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Duplicate_WeaponType) {
+
+    Duplicate_WeaponType_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "duplicate weapon type");
     EXPECT_EQ(0, 0) << test_exception;
 
 }
