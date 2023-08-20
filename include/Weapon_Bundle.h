@@ -1,5 +1,4 @@
 
-#include <string>
 #include "Pistol.h"
 #include "Heavy_Gun.h"
 #include "Knife.h"

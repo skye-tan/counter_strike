@@ -1,5 +1,4 @@
 
-#include <string>
 #include "Weapon.h"
 
 #ifndef KNIFE_H
