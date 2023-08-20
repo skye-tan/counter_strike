@@ -16,4 +16,5 @@ add_library(exception_lib
             Dead_Buyer_Exception.cpp
             Dead_Attacker_Exception.cpp
             Dead_Attacked_Exception.cpp
+            Invalid_Attribute_Exception.cpp
 )
