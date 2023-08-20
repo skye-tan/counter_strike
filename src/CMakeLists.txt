@@ -21,4 +21,6 @@ add_library(exception_lib
             Invalid_GunName_Exception.cpp
             Invalid_GunCategory_Exception.cpp
             Duplicate_Attribute_Exception.cpp
+            Duplicate_UserName_Exception.cpp
+            Duplicate_WeaponType_Exception.cpp
 )
