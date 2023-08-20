@@ -6,3 +6,7 @@ add_library(weapon_lib
             Heavy_Gun.cpp
             Knife.cpp
 )
+
+add_library(exception_lib
+            Custom_Exception.cpp
+)
