@@ -16,3 +16,4 @@
 #include "Duplicate_WeaponType_Exception.h"
 #include "Duplicate_Heavy_Gun_Exception.h"
 #include "Duplicate_Pistol_Exception.h"
+#include "Out_Of_Time_Exception.h"
