@@ -1,2 +1,2 @@
 ﻿
-add_library(weapon_lib Weapon.cpp)
+add_library(weapon_lib Weapon.cpp Pistol.cpp Heavy_Gun.cpp Knife.cpp)
