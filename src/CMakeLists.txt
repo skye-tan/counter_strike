@@ -10,4 +10,5 @@ add_library(weapon_lib
 add_library(exception_lib
             Custom_Exception.cpp
             Insufficient_Money_Exception.cpp
+            Full_Team_Exception.cpp
 )
