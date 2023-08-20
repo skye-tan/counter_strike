@@ -9,7 +9,7 @@
 #include "Dead_Attacked_Exception.h"
 #include "Invalid_Attribute_Exception.h"
 #include "Invalid_UserName_Exception.h"
-#include "Invalid_GunName_Exception.h"
+#include "Invalid_GunType_Exception.h"
 #include "Invalid_GunCategory_Exception.h"
 #include "Duplicate_Attribute_Exception.h"
 #include "Duplicate_UserName_Exception.h"
@@ -108,9 +108,9 @@ TEST(Exceptions, Invalid_UserName) {
 
 }
 
-TEST(Exceptions, Invalid_GunName) {
+TEST(Exceptions, Invalid_GunType) {
 
-    Invalid_GunName_Exception test_exception;
+    Invalid_GunType_Exception test_exception;
 
     EXPECT_EQ(test_exception.what(), "no such gun");
     EXPECT_EQ(0, 0) << test_exception;

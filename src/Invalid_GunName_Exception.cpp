@@ -1,5 +1,5 @@
 
-#include "Invalid_GunName_Exception.h"
+#include "Invalid_GunType_Exception.h"
 
-Invalid_GunName_Exception::Invalid_GunName_Exception() :
+Invalid_GunType_Exception::Invalid_GunType_Exception() :
     Invalid_Attribute_Exception("no such gun") {}
