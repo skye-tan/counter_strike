@@ -23,7 +23,7 @@ if(${weapon_lib_test})
 
     add_executable(KnifeTEST Knife_Test.cpp)
     target_link_libraries(KnifeTEST
-        gtest gte st_main weapon_lib
+        gtest gtest_main weapon_lib
     )
 
     add_test(test_weapon
