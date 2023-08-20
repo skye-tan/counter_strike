@@ -1,7 +1,7 @@
 #include "Weapon.h"
 #include "gtest/gtest.h"
 
-TEST(FirstTest, PartOne) {
+TEST(Weapon_Class, Getters) {
 
     Weapon test_weapon("test", 270, 130);
 
