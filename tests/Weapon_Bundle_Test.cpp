@@ -12,7 +12,7 @@ TEST(Weapon_Bundle_Class, pistol_Atrribute) {
         test_bundle.get_pistol();
     }
     catch (Invalid_GunType_Exception e) {
-        std::cout << "exception throwed!" << std::endl;
+        std::cout << "exception thrown!" << std::endl;
         EXPECT_EQ(e.what(), "no such gun");
     }
 
@@ -32,7 +32,7 @@ TEST(Weapon_Bundle_Class, heavy_gun_Atrribute) {
         test_bundle.get_heavy_gun();
     }
     catch (Invalid_GunType_Exception e) {
-        std::cout << "exception throwed!" << std::endl;
+        std::cout << "exception thrown!" << std::endl;
         EXPECT_EQ(e.what(), "no such gun");
     }
 
