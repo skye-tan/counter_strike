@@ -14,6 +14,8 @@
 #include "Duplicate_Attribute_Exception.h"
 #include "Duplicate_UserName_Exception.h"
 #include "Duplicate_WeaponType_Exception.h"
+#include "Duplicate_Heavy_Gun_Exception.h"
+#include "Duplicate_Pistol_Exception.h"
 #include "gtest/gtest.h"
 
 TEST(Exceptions, Custom) {
@@ -147,6 +149,24 @@ TEST(Exceptions, Duplicate_WeaponType) {
     Duplicate_WeaponType_Exception test_exception;
 
     EXPECT_EQ(test_exception.what(), "duplicate weapon type");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Duplicate_Heavy_Gun) {
+
+    Duplicate_Heavy_Gun_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "you have a heavy");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Duplicate_Pistol) {
+
+    Duplicate_Pistol_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "you have a pistol");
     EXPECT_EQ(0, 0) << test_exception;
 
 }
