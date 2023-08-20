@@ -23,4 +23,6 @@ add_library(exception_lib
             Duplicate_Attribute_Exception.cpp
             Duplicate_UserName_Exception.cpp
             Duplicate_WeaponType_Exception.cpp
+            Duplicate_Heavy_Gun_Exception.cpp
+            Duplicate_Pistol_Exception.cpp
 )
