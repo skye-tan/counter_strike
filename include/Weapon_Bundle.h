@@ -27,33 +27,33 @@ public:
      * 
      * @param pistol the new pistol which is going to be placed in the bundle
      */
-    void change_pistol(const Pistol& pistol);
+    void change_pistol(Pistol& pistol);
 
     /**
      * @brief Put a new heavy gun instead of the current heavy gun.
      * 
      * @param heavy_gun the new heavy gun which is going to be placed in the bundle
      */
-    void change_heavy_gun(const Heavy_Gun& heavy_gun);
+    void change_heavy_gun(Heavy_Gun& heavy_gun);
 
     /**
      * @brief Get the pistol.
      * 
-     * @return Pistol 
+     * @return Pistol*
      */
     Pistol get_pistol() const;
 
     /**
      * @brief Get the heavy gun.
      * 
-     * @return Heavy_Gun 
+     * @return Heavy_Gun*
      */
     Heavy_Gun get_heavy_gun() const;
 
     /**
      * @brief Get the knife.
      * 
-     * @return Knife 
+     * @return Knife
      */
     Knife get_knife() const;
     
@@ -63,26 +63,26 @@ private:
     /**
      * @brief Player's pistol.
      * 
-     *   A Pistol object which acts as the player's pistol type weapon.
+     *   A pointer to a Pistol object which acts as the player's pistol type weapon.
      * 
      */
-    Pistol pistol;
+    Pistol* pistol;
 
     /**
      * @brief  Player's heavy gun.
      *
-     *   A Heavy_Gun object which acts as the player's heavy type weapon.
+     *   A pointer to a Heavy_Gun object which acts as the player's heavy type weapon.
      * 
      */
-    Heavy_Gun heavy_gun;
+    Heavy_Gun* heavy_gun;
 
     /**
      * @brief Player's knife.
      *
-     *   A Knife object which acts as the player's knife.
+     *   A pointer to a Knife object which acts as the player's knife.
      * 
      */
-    Knife knife;
+    Knife* knife;
 
 };
 
