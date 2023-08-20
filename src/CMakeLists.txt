@@ -25,4 +25,5 @@ add_library(exception_lib
             Duplicate_WeaponType_Exception.cpp
             Duplicate_Heavy_Gun_Exception.cpp
             Duplicate_Pistol_Exception.cpp
+            Out_Of_Time_Exception.cpp
 )
