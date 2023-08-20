@@ -8,6 +8,9 @@
 #include "Dead_Attacker_Exception.h"
 #include "Dead_Attacked_Exception.h"
 #include "Invalid_Attribute_Exception.h"
+#include "Invalid_UserName_Exception.h"
+#include "Invalid_GunName_Exception.h"
+#include "Invalid_GunCategory_Exception.h"
 #include "gtest/gtest.h"
 
 TEST(Exceptions, Custom) {
@@ -87,6 +90,33 @@ TEST(Exceptions, Invalid_Attribute) {
     Invalid_Attribute_Exception test_exception;
 
     EXPECT_EQ(test_exception.what(), "invalid attribute");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Invalid_UserName) {
+
+    Invalid_UserName_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "invalid username");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Invalid_GunName) {
+
+    Invalid_GunName_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "no such gun");
+    EXPECT_EQ(0, 0) << test_exception;
+
+}
+
+TEST(Exceptions, Invalid_GunCategory) {
+
+    Invalid_GunCategory_Exception test_exception;
+
+    EXPECT_EQ(test_exception.what(), "invalid category gun");
     EXPECT_EQ(0, 0) << test_exception;
 
 }
