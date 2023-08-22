@@ -4,6 +4,8 @@ project(MahsanProject)
 set(CMAKE_CXX_STANDARD 14)
 set(weapon_lib_test FALSE)
 set(exception_lib_test FALSE)
+set(player_lib_test TRUE)
+set(game_lib_test TRUE)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
