@@ -47,3 +47,16 @@ if(${exception_lib_test})
     )
 
 endif()
+
+if(${game_lib_test})
+
+    add_executable(TimerTEST Timer_Test.cpp)
+    target_link_libraries(TimerTEST
+        gtest gtest_main game_lib
+    )
+
+    add_test(test_game
+            TimerTEST
+    )
+
+endif()
