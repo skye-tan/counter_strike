@@ -60,3 +60,16 @@ if(${game_lib_test})
     )
 
 endif()
+
+if(${player_lib_test})
+
+    add_executable(PlayerStatisticsTEST Player_Statistics_Test.cpp)
+    target_link_libraries(PlayerStatisticsTEST
+        gtest gtest_main player_lib exception_lib
+    )
+
+    add_test(test_player
+        PlayerStatisticsTEST
+    )
+
+endif()
