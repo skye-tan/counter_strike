@@ -45,4 +45,5 @@ add_library(player_lib
 
 add_library(game_lib
             Timer.cpp
+            Game_Manager.cpp
 )
