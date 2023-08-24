@@ -42,7 +42,7 @@ public:
      * 
      * @param username the new player's usesrname
      */
-    void add_player(const std::string username);
+    void add_player(const Player& player);
 
     /**
      * @brief Check whether a player by the given username exists in this team or not

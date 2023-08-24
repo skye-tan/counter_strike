@@ -13,14 +13,13 @@ Player& Team::get_player(const std::string username) {
     throw Invalid_UserName_Exception();
 }
 
-void Team::add_player(const std::string username) {
-    if (username_exists(username)) {
+void Team::add_player(const Player& player) {
+    if (username_exists(player.get_username())) {
         throw Duplicate_UserName_Exception();
     }
     if (members.size() == 10) {
         throw Full_Team_Exception();
     }
-    Player player = Player(username);
     members.push_back(player);
 }
 
