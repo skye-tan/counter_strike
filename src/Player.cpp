@@ -1,22 +1,29 @@
 
 #include "Player.h"
 
-Player::Player(const std::string input_username, const Timer& input_join_time) :
-    username(input_username), join_time(input_join_time) {
+Timer Player::join_dead_line = Timer(0, 3, 0);
+Timer Player::shop_dead_line = Timer(0, 45, 0);
+
+Player::Player(const std::string input_username, const int input_join_round,
+            const Timer& input_join_time) :
+    username(input_username), join_round(input_join_round), join_time(input_join_time) {
         
-        if (join_time >= Timer(0, 3, 0)) {
+        statistics = new Player_Statistics;
+        weapons = new Weapon_Bundle;
+
+        if (!(join_dead_line > join_time)) {
             statistics->set_health_min();
         }
         
     }
 
-void Player::buy_pistol(Pistol& pistol, const bool invalid_gun) {
+void Player::buy_pistol(Pistol& pistol, const Timer& current_time, const bool invalid_gun) {
 
     if (is_dead()) {
         throw Dead_Buyer_Exception();
     }
 
-    if (join_time >= Timer(0, 45, 0)) {
+    if (!(shop_dead_line > current_time)) {
         throw Out_Of_Time_Exception();
     }
 
@@ -35,13 +42,13 @@ void Player::buy_pistol(Pistol& pistol, const bool invalid_gun) {
 
 }
 
-void Player::buy_heavy_gun(Heavy_Gun& heavy_gun, const bool invalid_gun) {
+void Player::buy_heavy_gun(Heavy_Gun& heavy_gun, const Timer& current_time, const bool invalid_gun) {
 
     if (is_dead()) {
         throw Dead_Buyer_Exception();
     }
 
-    if (join_time >= Timer(0, 45, 0)) {
+    if (!(shop_dead_line > current_time)) {
         throw Out_Of_Time_Exception();
     }
 
@@ -60,7 +67,7 @@ void Player::buy_heavy_gun(Heavy_Gun& heavy_gun, const bool invalid_gun) {
 
 }
 
-void Player::attack(Player& attacked, const std::string& weapon_type, const bool same_team) {
+void Player::attack(Player& attacked, const std::string weapon_type, const bool same_team) {
 
     if (is_dead()) {
         throw Dead_Attacker_Exception();
@@ -106,7 +113,6 @@ bool Player::is_dead() const {
 }
 
 void Player::new_round(const bool has_won) {
-    join_time = Timer(0, 0, 0);
     statistics->set_health_max();
     if (has_won) {
         statistics->increase_money(2700);

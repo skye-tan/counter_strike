@@ -24,9 +24,10 @@ public:
      * @brief Construct a new Player object
      * 
      * @param input_username player's username
-     * @param input_join_time the time when the player has joined the game
+     * @param join_time the time when the player has joined the game
      */
-    Player(const std::string input_username = "no name", const Timer& input_join_time = Timer(0, 3, 0));
+    Player(const std::string input_username = "no name", const int input_join_round = 0,
+            const Timer& input_join_time = Timer(0, 0, 0));
 
     /**
      * @brief Buy a new pistol type waepon for the player
@@ -35,9 +36,10 @@ public:
      * exceptions will be thrown should there be any kind of hazard.
      * 
      * @param pistol the pistol object which the player want's to buy
+     * @param current_time current time of this round
      * @param invalid_gun determines whether the weapon is legal or not
      */
-    void buy_pistol(Pistol& pistol, const bool invalid_gun); 
+    void buy_pistol(Pistol& pistol, const Timer& current_time, const bool invalid_gun); 
 
     /**
      * @brief Buy a new heavy type waepon for the player
@@ -46,9 +48,10 @@ public:
      * exceptions will be thrown should there be any kind of hazard.
      * 
      * @param pistol the heavy object which the player want's to buy
+     * @param current_time current time of this round
      * @param invalid_gun determines whether the weapon is legal or not
      */
-    void buy_heavy_gun(Heavy_Gun& heavy_gun, const bool invalid_gu); 
+    void buy_heavy_gun(Heavy_Gun& heavy_gun, const Timer& current_time, const bool invalid_gu); 
 
     /**
      * @brief Manage the attacking action for this player
@@ -57,7 +60,7 @@ public:
      * @param weapon_type the type of waepon used by this player
      * @param same_team determines whether the players are in the same team or not
      */
-    void attack(Player& attacked, const std::string& weapon_type, const bool same_team);
+    void attack(Player& attacked, const std::string weapon_type, const bool same_team);
 
     /**
      * @brief Manage the properties of the player when being attacked
@@ -116,7 +119,13 @@ private:
     std::string username;
 
     /**
-     * @brief The time when the player has joined the game
+     * @brief the round when the player joined the game
+     * 
+     */
+    int join_round;
+
+    /**
+     * @brief the time when the player joined the game
      * 
      */
     Timer join_time;
@@ -133,6 +142,9 @@ private:
      * 
      */
     Player_Statistics* statistics;
+
+    static Timer join_dead_line;
+    static Timer shop_dead_line;
 
 };
 
