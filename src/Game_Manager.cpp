@@ -136,7 +136,8 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
             player.buy_heavy_gun(*heavy, current_time, false);
         }
         else {
-            player.buy_pistol(Pistol(), current_time, true);
+            Pistol junk;
+            player.buy_pistol(junk ,current_time, true);
         }
 
     }
