@@ -73,9 +73,15 @@ if(${player_lib_test})
         gtest gtest_main player_lib weapon_lib exception_lib game_lib
     )
 
+    add_executable(TeamTEST Team_Test.cpp)
+    target_link_libraries(TeamTEST
+        gtest gtest_main player_lib weapon_lib exception_lib game_lib
+    )
+
     add_test(test_player
         PlayerStatisticsTEST
         PlayerTEST
+        TeamTEST
     )
 
 endif()
