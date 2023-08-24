@@ -11,6 +11,7 @@ TEST(Player_Statistics_Class, Getters) {
     EXPECT_EQ(test_statistics.get_kills(), 0);
     EXPECT_EQ(test_statistics.get_deaths(), 0);
     EXPECT_EQ(test_statistics.get_health(), 100);
+    EXPECT_EQ(test_statistics.get_money(), 1000);
     EXPECT_EQ(test_statistics.has_enough_money(500), true);
     EXPECT_EQ(test_statistics.has_enough_money(1000), true);
     EXPECT_EQ(test_statistics.has_enough_money(1500), false);
