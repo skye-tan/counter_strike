@@ -147,9 +147,34 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
 
 void Game_Manager::score_board(const std::string time) {}
 
-void Game_Manager::start_new_round() {}
+void Game_Manager::start_new_round() {
 
-std::string Game_Manager::get_winner() {}
+    std::string winner = get_winner();
+    std::cout << winner << std::endl;
+
+    bool terroris_won = winner == "Terrorist" ? true : false;
+
+    terrorist->new_round(terroris_won);
+    counter_terrorist->new_round(!terroris_won);
+
+}
+
+std::string Game_Manager::get_winner() {
+
+    bool terrorist_has_alive = terrorist->has_alive_member();
+    bool counter_terrorist_has_alive = terrorist->has_alive_member();
+
+    if (!terrorist_has_alive && !counter_terrorist_has_alive) {
+        return "Counter-Terrorist";
+    }
+    else if (counter_terrorist_has_alive) {
+        return "Counter-Terrorist";
+    }
+    else {
+        return "Terrorist";
+    }
+
+}
 
 int Game_Manager::get_current_round() {
     return current_round;
