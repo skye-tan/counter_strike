@@ -71,3 +71,19 @@ TEST(Player_Statistics_Class, Money_Modification) {
     }
 
 }
+
+TEST(Player_Statistics_Class, Operators) {
+
+    Player_Statistics test_statistics_1;
+    Player_Statistics test_statistics_2;
+
+    test_statistics_1.increment_kills();
+    EXPECT_EQ(test_statistics_1 > test_statistics_2, true);
+
+    test_statistics_2.increment_kills();
+    EXPECT_EQ(test_statistics_1 == test_statistics_2, true);
+
+    test_statistics_2.increment_deaths();
+    EXPECT_EQ(test_statistics_1 > test_statistics_2, true);
+
+}
