@@ -124,8 +124,19 @@ void Player::new_round(const bool has_won) {
     }
 }
 
-bool Player::operator > (const Player& player) {
-       
+bool Player::operator > (const Player& second_player) {
+    if (*statistics > second_player.get_statistics()) {
+        return true;
+    }
+    else if (*statistics == second_player.get_statistics()) {
+        if (join_round < second_player.get_join_round()) {
+            return true;
+        }
+        else if (join_round == second_player.get_join_round() &&
+                    second_player.get_join_time() > join_time) {
+            return true;
+        }
+    }
     return false;
 }
 

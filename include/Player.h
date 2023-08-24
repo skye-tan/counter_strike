@@ -97,11 +97,11 @@ public:
     /**
      * @brief Compare two players
      * 
-     * @param player the second player
-     * @return true this player us superior
+     * @param second_player the second player
+     * @return true this player is superior
      * @return false the second player is superior
      */
-    bool operator > (const Player& player);
+    bool operator > (const Player& second_player);
 
     /**
      * @brief Get the username of the player
