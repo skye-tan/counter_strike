@@ -110,6 +110,27 @@ public:
      */
     std::string get_username() const;
 
+    /**
+     * @brief Get a copy of the player's statistics
+     * 
+     * @return Player_Statistics a copy of the player's statistics
+     */
+    Player_Statistics get_statistics() const;
+
+    /**
+     * @brief Get the time when the player joined the game
+     * 
+     * @return Timer the time when the player joined the game
+     */
+    Timer get_join_time() const;
+
+    /**
+     * @brief Get the round when the player joined the game
+     * 
+     * @return int the round when the player joined the game
+     */
+    int get_join_round() const;
+
 private:
 
     /**

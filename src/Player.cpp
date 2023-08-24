@@ -125,10 +125,22 @@ void Player::new_round(const bool has_won) {
 }
 
 bool Player::operator > (const Player& player) {
-    //TODO   
+       
     return false;
 }
 
 std::string Player::get_username() const {
     return username;
+}
+
+Player_Statistics Player::get_statistics() const {
+    return *statistics;
+}
+
+Timer Player::get_join_time() const {
+    return join_time;
+}
+
+int Player::get_join_round() const {
+    return join_round;
 }
