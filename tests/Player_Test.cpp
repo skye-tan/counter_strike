@@ -192,5 +192,16 @@ TEST(Player_Class, Attack_Action) {
 }
 
 TEST(Player_Class, Operators) {
-    //TODO
+    
+    Timer timer_1(0, 2, 100);
+    Timer timer_2(1, 42, 123);
+
+    Player test_player_1("player", 0, timer_1);
+    Player test_player_2("player", 1, timer_1);
+    Player test_player_3("player", 1, timer_2);
+
+    EXPECT_EQ(test_player_1 > test_player_2, true);
+    EXPECT_EQ(test_player_1 > test_player_3, true);
+    EXPECT_EQ(test_player_2 > test_player_3, true);
+
 }
