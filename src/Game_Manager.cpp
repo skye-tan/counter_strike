@@ -68,11 +68,15 @@ void Game_Manager::get_health(const std::string username, const std::string time
 
 void Game_Manager::tap(const std::string attacker, const std::string attacked, const std::string weapon_type, const std::string time) {
     try {
+
         Player player_attacker = find_player(attacker);
         Player player_attacked = find_player(attacked);
+
         bool same_team = (terrorist->username_exists(attacker) && terrorist->username_exists(attacked)) ||
         (counter_terrorist->username_exists(attacker) && counter_terrorist->username_exists(attacked));
+
         player_attacker.attack(player_attacked, weapon_type, same_team);
+
     }
     catch (Invalid_UserName_Exception e) {
         std::cout << e << std::endl;
@@ -91,7 +95,55 @@ void Game_Manager::tap(const std::string attacker, const std::string attacked, c
     }
 }
 
-void Game_Manager::buy(const std::string username, const std::string weapon_name, const std::string time) {}
+void Game_Manager::buy(const std::string username, const std::string weapon_name, const std::string time) {
+    try {
+
+        Player player = find_player(username);
+        bool is_terrorist = terrorist->username_exists(username);
+
+        Pistol* pistol = NULL;
+        Heavy_Gun* heavy = NULL;
+
+        if (is_terrorist) {
+            Pistol* pistol = terrorist->is_legal_pistol(weapon_name);
+            Heavy_Gun* heavy = terrorist->is_legal_heavy(weapon_name);
+            
+        }
+        else {
+            Pistol* pistol = counter_terrorist->is_legal_pistol(weapon_name);
+            Heavy_Gun* heavy = counter_terrorist->is_legal_heavy(weapon_name);
+        }
+
+        if (pistol != NULL) {
+            player.buy_pistol(*pistol, current_time, false);
+        }
+        else if (heavy != NULL) {
+            player.buy_heavy_gun(*heavy, current_time, false);
+        }
+        else {
+            player.buy_pistol(Pistol(), current_time, true);
+        }
+
+    }
+    catch (Invalid_UserName_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Dead_Buyer_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Out_Of_Time_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Invalid_GunCategory_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Duplicate_Pistol_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Duplicate_Heavy_Gun_Exception e) {
+        std::cout << e << std::endl;
+    }
+}
 
 void Game_Manager::score_board(const std::string time) {}
 
