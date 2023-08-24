@@ -18,7 +18,7 @@ public:
 
     void get_health(const std::string username, const std::string time);
 
-    void tap(const std::string attacker, const std::string atatcked,
+    void tap(const std::string attacker, const std::string attacked,
                 const std::string weapon_type, const std::string time);
 
     void buy(const std::string username, const std::string weapon_name, const std::string time);

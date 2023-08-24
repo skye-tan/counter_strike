@@ -28,9 +28,7 @@ Game_Manager::Game_Manager() :
 }
 
 void Game_Manager::add_user(const std::string username, const std::string team, const std::string time) {
-
     Player player(username, current_round, current_time);
-    
     try {
         if (team == "Terrorist") {
             terrorist->add_player(player);
@@ -46,11 +44,9 @@ void Game_Manager::add_user(const std::string username, const std::string team, 
     catch (Full_Team_Exception e) {
         std::cout << e << std::endl;
     }
-
 }
 
 void Game_Manager::get_money(const std::string username, const std::string time) {
-
     try {
         Player player = find_player(username);
         std::cout << player.get_statistics().get_money() << std::endl;
@@ -58,11 +54,9 @@ void Game_Manager::get_money(const std::string username, const std::string time)
     catch (Invalid_UserName_Exception e) {
         std::cout << e << std::endl;
     }
-
 }
 
 void Game_Manager::get_health(const std::string username, const std::string time) {
-
     try {
         Player player = find_player(username);
         std::cout << player.get_statistics().get_health() << std::endl;
@@ -70,11 +64,32 @@ void Game_Manager::get_health(const std::string username, const std::string time
     catch (Invalid_UserName_Exception e) {
         std::cout << e << std::endl;
     }
-
 }
 
-void Game_Manager::tap(const std::string attacker, const std::string atatcked,
-                const std::string weapon_type, const std::string time) {}
+void Game_Manager::tap(const std::string attacker, const std::string attacked, const std::string weapon_type, const std::string time) {
+    try {
+        Player player_attacker = find_player(attacker);
+        Player player_attacked = find_player(attacked);
+        bool same_team = (terrorist->username_exists(attacker) && terrorist->username_exists(attacked)) ||
+        (counter_terrorist->username_exists(attacker) && counter_terrorist->username_exists(attacked));
+        player_attacker.attack(player_attacked, weapon_type, same_team);
+    }
+    catch (Invalid_UserName_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Dead_Attacker_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Dead_Attacked_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Invalid_GunType_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Friendly_Fire_Exception e) {
+        std::cout << e << std::endl;
+    }
+}
 
 void Game_Manager::buy(const std::string username, const std::string weapon_name, const std::string time) {}
 
