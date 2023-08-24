@@ -49,9 +49,29 @@ void Game_Manager::add_user(const std::string username, const std::string team, 
 
 }
 
-void Game_Manager::get_money(const std::string username, const std::string time) {}
+void Game_Manager::get_money(const std::string username, const std::string time) {
 
-void Game_Manager::get_health(const std::string username, const std::string time) {}
+    try {
+        Player player = find_player(username);
+        std::cout << player.get_statistics().get_money() << std::endl;
+    }
+    catch (Invalid_UserName_Exception e) {
+        std::cout << e << std::endl;
+    }
+
+}
+
+void Game_Manager::get_health(const std::string username, const std::string time) {
+
+    try {
+        Player player = find_player(username);
+        std::cout << player.get_statistics().get_health() << std::endl;
+    }
+    catch (Invalid_UserName_Exception e) {
+        std::cout << e << std::endl;
+    }
+
+}
 
 void Game_Manager::tap(const std::string attacker, const std::string atatcked,
                 const std::string weapon_type, const std::string time) {}
@@ -69,3 +89,13 @@ int Game_Manager::get_current_round() {
 }
 
 void Game_Manager::update_current_time(std::string time) {}
+
+Player& Game_Manager::find_player(const std::string username) {
+    if (terrorist->username_exists(username)) {
+        return terrorist->get_player(username);
+    }
+    else if (counter_terrorist->username_exists(username)) {
+        return counter_terrorist->get_player(username);
+    }
+    throw Invalid_UserName_Exception();
+}

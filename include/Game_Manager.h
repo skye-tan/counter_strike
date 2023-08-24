@@ -43,6 +43,8 @@ private:
 
     void update_current_time(std::string time);
 
+    Player& find_player(const std::string username);
+
 };
 
 

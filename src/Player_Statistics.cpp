@@ -61,10 +61,13 @@ int Player_Statistics::get_kills() const {
 }
 
 int Player_Statistics::get_deaths() const {
-
     return deaths;
 }
 
 int Player_Statistics::get_health() const {
     return health;
+}
+
+int Player_Statistics::get_money() const {
+    return money;
 }
