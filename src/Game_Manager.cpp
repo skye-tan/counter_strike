@@ -1,5 +1,8 @@
 
 #include <iostream>
+#include <string>
+#include <string.h>
+#include <sstream>
 #include "Game_Manager.h"
 
 Game_Manager::Game_Manager() :
@@ -157,6 +160,8 @@ void Game_Manager::start_new_round() {
     terrorist->new_round(terroris_won);
     counter_terrorist->new_round(!terroris_won);
 
+    current_round++;
+
 }
 
 std::string Game_Manager::get_winner() {
@@ -180,7 +185,18 @@ int Game_Manager::get_current_round() {
     return current_round;
 }
 
-void Game_Manager::update_current_time(std::string time) {}
+void Game_Manager::update_current_time(std::string time) {
+
+    std::string minutes, seconds, milliseconds;
+    std::stringstream time_stream(time);
+
+    std::getline(time_stream, minutes, ':');
+    std::getline(time_stream, seconds, ':');
+    std::getline(time_stream, milliseconds, ':');
+
+    current_time = Timer(stoi(minutes), stoi(seconds), stoi(milliseconds));
+
+}
 
 Player& Game_Manager::find_player(const std::string username) {
     if (terrorist->username_exists(username)) {
