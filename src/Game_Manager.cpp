@@ -161,7 +161,15 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
 }
 
 void Game_Manager::score_board(const std::string time) {
+
     update_current_time(time);
+
+    std::cout << "Counter-Terrorist-Players:" << std::endl;
+    std::cout << counter_terrorist->get_ranking().str();
+
+    std::cout << "Terrorist-Players:" << std::endl;
+    std::cout << terrorist->get_ranking().str();
+
 }
 
 void Game_Manager::start_new_round() {
