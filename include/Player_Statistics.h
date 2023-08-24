@@ -101,6 +101,23 @@ public:
      */
     int get_health() const;
 
+    /**
+     * @brief Compare two statistics
+     * 
+     * @param second_statistics the second player
+     * @return true both are equal
+     * @return false they aren't equal
+     */
+    bool operator == (const Player_Statistics& second_statistics);
+
+    /**
+     * @brief Compare two statistics
+     * 
+     * @param second_statistics the second player
+     * @return true this statistics is superior
+     * @return false the second statistics is superior
+     */
+    bool operator > (const Player_Statistics& second_statistics);
 
 private:
 

@@ -41,6 +41,21 @@ bool Player_Statistics::has_enough_money(const int amount) const {
     return (money >= amount);
 }
 
+bool Player_Statistics::operator == (const Player_Statistics& second_statistics) {
+    return (kills == second_statistics.get_kills() && deaths == second_statistics.get_deaths());
+}
+
+bool Player_Statistics::operator > (const Player_Statistics& second_statistics) {
+    if (kills > second_statistics.get_kills()) {
+        return true;
+    }
+    else if (kills == second_statistics.get_kills() &&
+                deaths < second_statistics.get_deaths()) {
+        return true;
+    }
+    return false;
+}
+
 int Player_Statistics::get_kills() const {
     return kills;
 }
