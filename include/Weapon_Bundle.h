@@ -19,34 +19,47 @@ public:
 
     /**
      * @brief Construct a new Weapon_Bundle object.
+     * 
      */
     Weapon_Bundle();
 
     /**
-     * @brief Put a new pistol instead of the current poistol.
+     * @brief Add a new pistol
      * 
      * @param pistol the new pistol which is going to be placed in the bundle
      */
-    void change_pistol(Pistol& pistol);
+    void add_pistol(Pistol& pistol);
 
     /**
-     * @brief Put a new heavy gun instead of the current heavy gun.
+     * @brief Add a new heavy gun
      * 
      * @param heavy_gun the new heavy gun which is going to be placed in the bundle
      */
-    void change_heavy_gun(Heavy_Gun& heavy_gun);
+    void add_heavy_gun(Heavy_Gun& heavy_gun);
+
+    /**
+     * @brief Remove the current pistol
+     * 
+     */
+    void remove_pistol();
+
+    /**
+     * @brief Remove the current heavy gun
+     * 
+     */
+    void remove_heavy_gun();
 
     /**
      * @brief Get the pistol.
      * 
-     * @return Pistol*
+     * @return Pistol
      */
     Pistol get_pistol() const;
 
     /**
      * @brief Get the heavy gun.
      * 
-     * @return Heavy_Gun*
+     * @return Heavy_Gun
      */
     Heavy_Gun get_heavy_gun() const;
 

@@ -23,7 +23,8 @@ public:
      * @param input_damage Damage dealt by this weapon
      * @param input_reward Recived reward for killing an enemy with this weapon
      */
-    Weapon(const std::string input_name = "", const int input_damage = 0, const int input_reward = 0);
+    Weapon(const std::string input_name = "", const int input_price = 0, 
+            const int input_damage = 0, const int input_reward = 0);
 
     /**
      * @brief Get weapon's name
@@ -45,6 +46,13 @@ public:
      * @return int 
      */
     int get_reward() const;
+
+    /**
+     * @brief Get weapon's price
+     * 
+     * @return int 
+     */
+    int get_price() const;
 
 private:
 
@@ -73,6 +81,14 @@ private:
      * 
      */
     int reward;
+
+    /**
+     * @brief The price of this weapon
+     * 
+     *  The amount of money needed to buy this weapon
+     * 
+     */
+    int price;
 
 };
 

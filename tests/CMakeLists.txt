@@ -47,3 +47,41 @@ if(${exception_lib_test})
     )
 
 endif()
+
+if(${game_lib_test})
+
+    add_executable(TimerTEST Timer_Test.cpp)
+    target_link_libraries(TimerTEST
+        gtest gtest_main game_lib
+    )
+
+    add_test(test_game
+            TimerTEST
+    )
+
+endif()
+
+if(${player_lib_test})
+
+    add_executable(PlayerStatisticsTEST Player_Statistics_Test.cpp)
+    target_link_libraries(PlayerStatisticsTEST
+        gtest gtest_main player_lib exception_lib
+    )
+
+    add_executable(PlayerTEST Player_Test.cpp)
+    target_link_libraries(PlayerTEST
+        gtest gtest_main player_lib weapon_lib exception_lib game_lib
+    )
+
+    add_executable(TeamTEST Team_Test.cpp)
+    target_link_libraries(TeamTEST
+        gtest gtest_main player_lib weapon_lib exception_lib game_lib
+    )
+
+    add_test(test_player
+        PlayerStatisticsTEST
+        PlayerTEST
+        TeamTEST
+    )
+
+endif()

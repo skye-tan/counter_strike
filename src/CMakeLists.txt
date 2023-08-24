@@ -36,3 +36,13 @@ add_library(exception_lib
             ${dead_exceptions}
             ${duplicate_exceptions}
 )
+
+add_library(player_lib
+            Player_Statistics.cpp
+            Player.cpp
+            Team.cpp
+)
+
+add_library(game_lib
+            Timer.cpp
+)
