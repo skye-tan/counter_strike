@@ -60,7 +60,7 @@ public:
      *   Returns NULL if the weapon doesn't exist.
      * 
      * @param weapon_name the weapon's name
-     * @return const Pistol& the Pistol object
+     * @return Pistol* the Pistol object
      */
     Pistol* is_legal_pistol(const std::string weapon_name);
 
@@ -71,7 +71,7 @@ public:
      *   Returns NULL if the weapon doesn't exist.
      * 
      * @param weapon_name the weapon's name
-     * @return const Pistol& the Pistol object
+     * @return Heavy_Gun* the Pistol object
      */
     Heavy_Gun* is_legal_heavy(const std::string weapon_name);
 
