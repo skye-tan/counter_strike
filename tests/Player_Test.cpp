@@ -10,6 +10,10 @@ TEST(Player_Class, Basics) {
     Player test_player("player", 0, timer);
 
     EXPECT_EQ(test_player.get_username(), "player");
+    EXPECT_EQ(test_player.get_join_round(), 0);
+    EXPECT_EQ(test_player.get_join_time().get_minutes(), 1);
+    EXPECT_EQ(test_player.get_join_time().get_seconds(), 42);
+    EXPECT_EQ(test_player.get_join_time().get_milliseconds(), 123);
     EXPECT_EQ(test_player.is_dead(), true);
 
     test_player.new_round(true);
