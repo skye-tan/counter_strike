@@ -31,15 +31,23 @@ Game_Manager::Game_Manager() :
 }
 
 void Game_Manager::add_user(const std::string username, const std::string team, const std::string time) {
-    Player player(username, current_round, current_time);
+    update_current_time(time);
     try {
+
+        if (terrorist->username_exists(username) || counter_terrorist->username_exists(username)) {
+            throw Duplicate_UserName_Exception();
+        }
+        Player player(username, current_round, current_time);
+
         if (team == "Terrorist") {
             terrorist->add_player(player);
         }
         else {
             counter_terrorist->add_player(player);
         }
+
         std::cout << "this user added to " << team << std::endl;
+
     }
     catch (Duplicate_UserName_Exception e) {
         std::cout << e << std::endl;
@@ -50,6 +58,7 @@ void Game_Manager::add_user(const std::string username, const std::string team, 
 }
 
 void Game_Manager::get_money(const std::string username, const std::string time) {
+    update_current_time(time);
     try {
         Player player = find_player(username);
         std::cout << player.get_statistics().get_money() << std::endl;
@@ -60,6 +69,7 @@ void Game_Manager::get_money(const std::string username, const std::string time)
 }
 
 void Game_Manager::get_health(const std::string username, const std::string time) {
+    update_current_time(time);
     try {
         Player player = find_player(username);
         std::cout << player.get_statistics().get_health() << std::endl;
@@ -70,6 +80,7 @@ void Game_Manager::get_health(const std::string username, const std::string time
 }
 
 void Game_Manager::tap(const std::string attacker, const std::string attacked, const std::string weapon_type, const std::string time) {
+    update_current_time(time);
     try {
 
         Player player_attacker = find_player(attacker);
@@ -99,6 +110,7 @@ void Game_Manager::tap(const std::string attacker, const std::string attacked, c
 }
 
 void Game_Manager::buy(const std::string username, const std::string weapon_name, const std::string time) {
+    update_current_time(time);
     try {
 
         Player player = find_player(username);
@@ -148,7 +160,9 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
     }
 }
 
-void Game_Manager::score_board(const std::string time) {}
+void Game_Manager::score_board(const std::string time) {
+    update_current_time(time);
+}
 
 void Game_Manager::start_new_round() {
 
