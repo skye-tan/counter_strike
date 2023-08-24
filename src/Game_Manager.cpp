@@ -1,4 +1,5 @@
 
+#include <iostream>
 #include "Game_Manager.h"
 
 Game_Manager::Game_Manager() :
@@ -26,7 +27,27 @@ Game_Manager::Game_Manager() :
     
 }
 
-void Game_Manager::add_user(const std::string username, const std::string team, const std::string time) {}
+void Game_Manager::add_user(const std::string username, const std::string team, const std::string time) {
+
+    Player player(username, current_round, current_time);
+    
+    try {
+        if (team == "Terrorist") {
+            terrorist->add_player(player);
+        }
+        else {
+            counter_terrorist->add_player(player);
+        }
+        std::cout << "this user added to " << team << std::endl;
+    }
+    catch (Duplicate_UserName_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Full_Team_Exception e) {
+        std::cout << e << std::endl;
+    }
+
+}
 
 void Game_Manager::get_money(const std::string username, const std::string time) {}
 

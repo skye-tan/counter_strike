@@ -4,8 +4,7 @@
 Timer Player::join_dead_line = Timer(0, 3, 0);
 Timer Player::shop_dead_line = Timer(0, 45, 0);
 
-Player::Player(const std::string input_username, const int input_join_round,
-            const Timer& input_join_time) :
+Player::Player(const std::string input_username, const int input_join_round, Timer input_join_time) :
     username(input_username), join_round(input_join_round), join_time(input_join_time) {
         
         statistics = new Player_Statistics;
