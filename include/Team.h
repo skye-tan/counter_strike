@@ -27,6 +27,12 @@ public:
     Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<Heavy_Gun>& input_legal_heavies);
 
     /**
+     * @brief Destroy the Team object
+     * 
+     */
+    ~Team();
+
+    /**
      * @brief Get a specified player by username
      * 
      *   If the player does not exist in the team, an exception will be thrown.

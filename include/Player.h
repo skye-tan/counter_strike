@@ -29,6 +29,8 @@ public:
     Player(const std::string input_username = "no name", const int input_join_round = 0,
             Timer input_join_time = Timer(0, 0, 0));
 
+    void free_memory();
+
     /**
      * @brief Buy a new pistol type waepon for the player
      * 

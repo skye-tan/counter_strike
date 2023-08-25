@@ -10,8 +10,6 @@ Weapon_Bundle::Weapon_Bundle() {
 
 Weapon_Bundle::~Weapon_Bundle() {
     delete knife;
-    delete pistol;
-    delete heavy_gun;
 }
 
 void Weapon_Bundle::add_pistol(Pistol& pistol) {

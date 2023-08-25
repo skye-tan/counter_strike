@@ -16,6 +16,11 @@ Player::Player(const std::string input_username, const int input_join_round, Tim
         
     }
 
+void Player::free_memory() {
+    delete statistics;
+    delete weapons;
+}
+
 void Player::buy_pistol(Pistol& pistol) {
 
     weapons->add_pistol(pistol);
