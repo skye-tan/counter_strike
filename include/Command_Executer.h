@@ -20,6 +20,12 @@ public:
     Command_Executer();
 
     /**
+     * @brief Destroy the Command_Executer object
+     * 
+     */
+    ~Command_Executer();
+
+    /**
      * @brief Start reading and executing commands
      * 
      */

@@ -23,6 +23,12 @@ public:
     Game_Manager();
 
     /**
+     * @brief Destroy the Game_Manager object
+     * 
+     */
+    ~Game_Manager();
+
+    /**
      * @brief Add a new player to the given team
      * 
      * @param username player's username

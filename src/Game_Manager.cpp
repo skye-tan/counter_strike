@@ -30,6 +30,11 @@ Game_Manager::Game_Manager() :
     
 }
 
+Game_Manager::~Game_Manager() {
+    delete terrorist;
+    delete counter_terrorist;
+}
+
 void Game_Manager::add_user(const std::string username, const std::string team, const std::string time) {
     update_current_time(time);
     try {

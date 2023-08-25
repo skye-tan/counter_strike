@@ -24,6 +24,12 @@ public:
     Weapon_Bundle();
 
     /**
+     * @brief Destroy the Weapon_Bundle object
+     * 
+     */
+    ~Weapon_Bundle();
+
+    /**
      * @brief Add a new pistol
      * 
      * @param pistol the new pistol which is going to be placed in the bundle

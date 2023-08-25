@@ -5,6 +5,10 @@ Command_Executer::Command_Executer() {
     game_manager = new Game_Manager();
 }
 
+Command_Executer::~Command_Executer() {
+    delete game_manager;
+}
+
 void Command_Executer::start() {
 
     int number_of_rounds;

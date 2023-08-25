@@ -8,6 +8,12 @@ Weapon_Bundle::Weapon_Bundle() {
     knife = new Knife();
 }
 
+Weapon_Bundle::~Weapon_Bundle() {
+    delete knife;
+    delete pistol;
+    delete heavy_gun;
+}
+
 void Weapon_Bundle::add_pistol(Pistol& pistol) {
     if (this->pistol != NULL) {
         throw Duplicate_Pistol_Exception();
