@@ -102,7 +102,7 @@ void Player::new_round(const bool has_won) {
         statistics->increase_money(2700);
     }
     else {
-        statistics->increase_money(2300);
+        statistics->increase_money(2400);
         weapons->remove_heavy_gun();
         weapons->remove_pistol();
     }
