@@ -64,3 +64,21 @@ void Team::new_round(const bool is_winner) {
         player.new_round(is_winner);
     }
 }
+
+std::stringstream Team::get_ranking() {
+
+    sort(members.begin(), members.end(), [](Player &first, Player &second) { 
+        return first > second; 
+    });
+
+    std::stringstream ranking;
+
+    for (int i = 0; i < members.size(); i++) {
+        ranking << i + 1 << " " << members[i].get_username() << " " <<
+                members[i].get_statistics().get_kills() << " " <<
+                members[i].get_statistics().get_deaths() << std::endl;
+    }
+
+    return ranking;
+
+}

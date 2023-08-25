@@ -102,6 +102,13 @@ public:
     int get_health() const;
 
     /**
+     * @brief Get the money 
+     * 
+     * @return int amount of money
+     */
+    int get_money() const;
+
+    /**
      * @brief Compare two statistics
      * 
      * @param second_statistics the second player

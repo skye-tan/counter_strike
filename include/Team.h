@@ -1,6 +1,8 @@
 
 #include "Player.h"
 #include <vector>
+#include <algorithm>
+#include <sstream>
 
 #ifndef TEAM_H
 #define TEAM_H
@@ -91,6 +93,13 @@ public:
      * @param is_winner determines whether this team is the winner of this round or not
      */
     void new_round(const bool is_winner);
+
+    /**
+     * @brief Get the ranking of the members
+     * 
+     * @return std::stringstream a stringstream contaning the ranking
+     */
+    std::stringstream get_ranking();
 
 private:
 

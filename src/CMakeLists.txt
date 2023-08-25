@@ -1,11 +1,16 @@
 ﻿
-add_library(weapon_lib
+
+set(weapon_lib_files
             Weapon_Bundle.cpp
             Weapon.cpp
             Pistol.cpp
             Heavy_Gun.cpp
             Knife.cpp
 )
+add_library(weapon_lib
+            ${weapon_lib_files}
+)
+
 
 set(invalid_exceptions
     Invalid_Attribute_Exception.cpp
@@ -26,23 +31,46 @@ set(duplicate_exceptions
     Duplicate_Heavy_Gun_Exception.cpp
     Duplicate_Pistol_Exception.cpp    
 )
+set(exception_lib_files
+    Custom_Exception.cpp
+    Insufficient_Money_Exception.cpp
+    Full_Team_Exception.cpp
+    Friendly_Fire_Exception.cpp
+    Out_Of_Time_Exception.cpp
+    ${invalid_exceptions}
+    ${dead_exceptions}
+    ${duplicate_exceptions}
+)
 add_library(exception_lib
-            Custom_Exception.cpp
-            Insufficient_Money_Exception.cpp
-            Full_Team_Exception.cpp
-            Friendly_Fire_Exception.cpp
-            Out_Of_Time_Exception.cpp
-            ${invalid_exceptions}
-            ${dead_exceptions}
-            ${duplicate_exceptions}
+            ${exception_lib_files}
 )
 
+
+set(player_lib_files
+    Player_Statistics.cpp
+    Player.cpp
+    Team.cpp
+)
 add_library(player_lib
-            Player_Statistics.cpp
-            Player.cpp
-            Team.cpp
+            ${player_lib_files}
 )
 
-add_library(game_lib
-            Timer.cpp
+
+set(game_lib_files
+    Timer.cpp
+    Game_Manager.cpp
+    Command_Executer.cpp
 )
+add_library(game_lib
+            ${game_lib_files}
+)
+
+
+add_executable(main
+            main.cpp
+            ${weapon_lib_files}
+            ${exception_lib_files} 
+            ${player_lib_files} 
+            ${game_lib_files}   
+)
+

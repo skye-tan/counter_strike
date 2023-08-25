@@ -17,6 +17,9 @@ TEST(Player_Class, Player_Management) {
     Timer timer_2(2, 0, 0);
     Player player_2("ali", 0, timer_2);
 
+    Timer timer_3(0, 0, 0);
+    Player player_3("ahmad", 0, timer_3);
+
     test_team.add_player(player_1);
 
     try {
@@ -45,6 +48,9 @@ TEST(Player_Class, Player_Management) {
 
     Player recived_player = test_team.get_player("ali");
     EXPECT_EQ(recived_player.get_username(), player_1.get_username());
+
+    test_team.add_player(player_3);
+    std::cout << test_team.get_ranking().str();
     
 }
 
