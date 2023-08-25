@@ -91,6 +91,8 @@ void Game_Manager::tap(const std::string attacker, const std::string attacked, c
 
         player_attacker.attack(player_attacked, weapon_type, same_team);
 
+        std::cout << "nice shot" << std::endl;
+
     }
     catch (Invalid_UserName_Exception e) {
         std::cout << e << std::endl;
@@ -140,6 +142,8 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
             player.buy_pistol(junk ,current_time, true);
         }
 
+        std::cout << "I hope you can use it" << std::endl;
+
     }
     catch (Invalid_UserName_Exception e) {
         std::cout << e << std::endl;
@@ -176,7 +180,7 @@ void Game_Manager::score_board(const std::string time) {
 void Game_Manager::start_new_round() {
 
     std::string winner = get_winner();
-    std::cout << winner << std::endl;
+    std::cout << winner  << " won" << std::endl;
 
     bool terroris_won = winner == "Terrorist" ? true : false;
 
