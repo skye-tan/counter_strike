@@ -25,14 +25,13 @@ TEST(Player_Class, Basics) {
 TEST(Player_Class, Buy_Pistol) {
 
     Timer timer_1(1, 42, 123);
-    Timer timer_2(0, 2, 100);
 
     Player test_player("player", 0, timer_1);
     Pistol pistol_1("pistol", 1000);
     Pistol pistol_2("pistol", 10000);
 
     try {
-        test_player.buy_pistol(pistol_1, timer_1, true);
+        test_player.can_buy(timer_1);
     }
     catch (Dead_Buyer_Exception e) {
         std::cout << e << std::endl;
@@ -42,25 +41,17 @@ TEST(Player_Class, Buy_Pistol) {
     test_player.new_round(true);
 
     try {
-        test_player.buy_pistol(pistol_1, timer_1, true);
+        test_player.can_buy(timer_1);
     }
     catch (Out_Of_Time_Exception e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "you are out of time");
     }
 
-    try {
-        test_player.buy_pistol(pistol_1, timer_2, true);
-    }
-    catch (Invalid_GunCategory_Exception e) {
-        std::cout << e << std::endl;
-        EXPECT_EQ(e.what(), "invalid category gun");
-    }
-
-    test_player.buy_pistol(pistol_1, timer_2, false);
+    test_player.buy_pistol(pistol_1);
 
     try {
-        test_player.buy_pistol(pistol_1, timer_2, false);
+        test_player.buy_pistol(pistol_1);
     }
     catch (Duplicate_Pistol_Exception e) {
         std::cout << e << std::endl;
@@ -70,21 +61,20 @@ TEST(Player_Class, Buy_Pistol) {
     test_player.new_round(false);
 
     try {
-        test_player.buy_pistol(pistol_2, timer_2, false);
+        test_player.buy_pistol(pistol_2);
     }
     catch (Insufficient_Money_Exception e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "no enough money");
     }
 
-    test_player.buy_pistol(pistol_1, timer_2, false);
+    test_player.buy_pistol(pistol_1);
 
 }
 
 TEST(Player_Class, Buy_Heavy) {
 
     Timer timer_1(1, 42, 123);
-    Timer timer_2(0, 2, 100);
 
     Player test_player("player", 0, timer_1);
     Heavy_Gun heavy_1("heavy", 1000);
@@ -92,7 +82,7 @@ TEST(Player_Class, Buy_Heavy) {
 
 
     try {
-        test_player.buy_heavy_gun(heavy_1, timer_1, true);
+        test_player.can_buy(timer_1);
     }
     catch (Dead_Buyer_Exception e) {
         std::cout << e << std::endl;
@@ -102,25 +92,17 @@ TEST(Player_Class, Buy_Heavy) {
     test_player.new_round(true);
 
     try {
-        test_player.buy_heavy_gun(heavy_1, timer_1, true);
+        test_player.can_buy(timer_1);
     }
     catch (Out_Of_Time_Exception e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "you are out of time");
     }
 
-    try {
-        test_player.buy_heavy_gun(heavy_1, timer_2, true);
-    }
-    catch (Invalid_GunCategory_Exception e) {
-        std::cout << e << std::endl;
-        EXPECT_EQ(e.what(), "invalid category gun");
-    }
-
-    test_player.buy_heavy_gun(heavy_1, timer_2, false);
+    test_player.buy_heavy_gun(heavy_1);
 
     try {
-        test_player.buy_heavy_gun(heavy_1, timer_2, false);
+        test_player.buy_heavy_gun(heavy_1);
     }
     catch (Duplicate_Heavy_Gun_Exception e) {
         std::cout << e << std::endl;
@@ -130,14 +112,14 @@ TEST(Player_Class, Buy_Heavy) {
     test_player.new_round(false);
 
     try {
-        test_player.buy_heavy_gun(heavy_2, timer_2, false);
+        test_player.buy_heavy_gun(heavy_2);
     }
     catch (Insufficient_Money_Exception e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "no enough money");
     }
 
-    test_player.buy_heavy_gun(heavy_1, timer_2, false);
+    test_player.buy_heavy_gun(heavy_1);
 
 }
 
@@ -177,7 +159,7 @@ TEST(Player_Class, Attack_Action) {
     }
 
 
-    test_attacker.buy_heavy_gun(heavy, Timer(0, 0, 0), false);
+    test_attacker.buy_heavy_gun(heavy);
 
     try {
         test_attacker.attack(test_attacked, "heavy", true);

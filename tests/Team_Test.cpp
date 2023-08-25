@@ -66,14 +66,14 @@ TEST(Player_Class, Weapon_Management) {
 
     Team test_team(legal_pistols, legal_heavies);
 
-    Pistol* pistol = test_team.is_legal_pistol("Revolver");
-    Heavy_Gun* heavy = test_team.is_legal_heavy("AK");
+    Pistol* pistol = test_team.get_legal_pistol("Revolver");
+    Heavy_Gun* heavy = test_team.get_legal_heavy("AK");
 
     EXPECT_EQ(pistol->get_name(), "Revolver");
     EXPECT_EQ(heavy->get_name(), "AK");
 
-    pistol = test_team.is_legal_pistol("Fake");
-    heavy = test_team.is_legal_heavy("Fake");
+    pistol = test_team.get_legal_pistol("Fake");
+    heavy = test_team.get_legal_heavy("Fake");
 
     EXPECT_EQ(pistol == NULL, true);
     EXPECT_EQ(heavy == NULL, true);
