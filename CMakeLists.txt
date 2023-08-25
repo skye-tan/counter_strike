@@ -3,6 +3,8 @@ project(MahsanProject)
 
 set(CMAKE_CXX_STANDARD 14)
 
+set(generate_libraries FALSE)
+set(testing FALSE)
 set(weapon_lib_test FALSE)
 set(exception_lib_test FALSE)
 set(player_lib_test FALSE)
@@ -10,6 +12,9 @@ set(game_lib_test FALSE)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-add_subdirectory(libs/googletest)
 add_subdirectory(src)
-add_subdirectory(tests)
+
+if(${testing})
+    add_subdirectory(libs/googletest)
+    add_subdirectory(tests)
+endif()

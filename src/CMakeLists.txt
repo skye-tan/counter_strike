@@ -1,5 +1,4 @@
 ﻿
-
 set(weapon_lib_files
             Weapon_Bundle.cpp
             Weapon.cpp
@@ -7,10 +6,6 @@ set(weapon_lib_files
             Heavy_Gun.cpp
             Knife.cpp
 )
-add_library(weapon_lib
-            ${weapon_lib_files}
-)
-
 
 set(invalid_exceptions
     Invalid_Attribute_Exception.cpp
@@ -41,30 +36,38 @@ set(exception_lib_files
     ${dead_exceptions}
     ${duplicate_exceptions}
 )
-add_library(exception_lib
-            ${exception_lib_files}
-)
-
 
 set(player_lib_files
     Player_Statistics.cpp
     Player.cpp
     Team.cpp
 )
-add_library(player_lib
-            ${player_lib_files}
-)
-
 
 set(game_lib_files
     Timer.cpp
     Game_Manager.cpp
     Command_Executer.cpp
 )
-add_library(game_lib
-            ${game_lib_files}
-)
 
+if(${generate_libraries})
+
+    add_library(weapon_lib
+                ${weapon_lib_files}
+    )
+
+    add_library(exception_lib
+                ${exception_lib_files}
+    )
+
+    add_library(player_lib
+                ${player_lib_files}
+    )
+
+    add_library(game_lib
+             ${game_lib_files}
+    )   
+
+endif()
 
 add_executable(main
             main.cpp
@@ -73,4 +76,3 @@ add_executable(main
             ${player_lib_files} 
             ${game_lib_files}   
 )
-
