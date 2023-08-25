@@ -202,7 +202,7 @@ void Game_Manager::start_new_round() {
 std::string Game_Manager::get_winner() {
 
     bool terrorist_has_alive = terrorist->has_alive_member();
-    bool counter_terrorist_has_alive = terrorist->has_alive_member();
+    bool counter_terrorist_has_alive = counter_terrorist->has_alive_member();
 
     if (!terrorist_has_alive && !counter_terrorist_has_alive) {
         return "Counter-Terrorist";
