@@ -16,19 +16,7 @@ Player::Player(const std::string input_username, const int input_join_round, Tim
         
     }
 
-void Player::buy_pistol(Pistol& pistol, const Timer& current_time, const bool invalid_gun) {
-
-    if (is_dead()) {
-        throw Dead_Buyer_Exception();
-    }
-
-    if (!(shop_dead_line > current_time)) {
-        throw Out_Of_Time_Exception();
-    }
-
-    if (invalid_gun) {
-        throw Invalid_GunCategory_Exception();
-    }
+void Player::buy_pistol(Pistol& pistol) {
 
     weapons->add_pistol(pistol);
 
@@ -41,19 +29,7 @@ void Player::buy_pistol(Pistol& pistol, const Timer& current_time, const bool in
 
 }
 
-void Player::buy_heavy_gun(Heavy_Gun& heavy_gun, const Timer& current_time, const bool invalid_gun) {
-
-    if (is_dead()) {
-        throw Dead_Buyer_Exception();
-    }
-
-    if (!(shop_dead_line > current_time)) {
-        throw Out_Of_Time_Exception();
-    }
-
-    if (invalid_gun) {
-        throw Invalid_GunCategory_Exception();
-    }
+void Player::buy_heavy_gun(Heavy_Gun& heavy_gun) {
 
     weapons->add_heavy_gun(heavy_gun);
 
@@ -64,6 +40,15 @@ void Player::buy_heavy_gun(Heavy_Gun& heavy_gun, const Timer& current_time, cons
 
     statistics->decrease_money(heavy_gun.get_price());
 
+}
+
+void Player::can_buy(const Timer& current_time) {
+    if (is_dead()) {
+        throw Dead_Buyer_Exception();
+    }
+    if (!(shop_dead_line > current_time)) {
+        throw Out_Of_Time_Exception();
+    }
 }
 
 void Player::attack(Player& attacked, const std::string weapon_type, const bool same_team) {

@@ -116,30 +116,30 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
     try {
 
         Player player = find_player(username);
+        player.can_buy(current_time);
+
         bool is_terrorist = terrorist->username_exists(username);
 
         Pistol* pistol = NULL;
         Heavy_Gun* heavy = NULL;
 
         if (is_terrorist) {
-            Pistol* pistol = terrorist->is_legal_pistol(weapon_name);
-            Heavy_Gun* heavy = terrorist->is_legal_heavy(weapon_name);
-            
+            pistol = terrorist->get_legal_pistol(weapon_name);
+            heavy = terrorist->get_legal_heavy(weapon_name); 
         }
         else {
-            Pistol* pistol = counter_terrorist->is_legal_pistol(weapon_name);
-            Heavy_Gun* heavy = counter_terrorist->is_legal_heavy(weapon_name);
+            pistol = counter_terrorist->get_legal_pistol(weapon_name);
+            heavy = counter_terrorist->get_legal_heavy(weapon_name);
         }
 
         if (pistol != NULL) {
-            player.buy_pistol(*pistol, current_time, false);
+            player.buy_pistol(*pistol);
         }
         else if (heavy != NULL) {
-            player.buy_heavy_gun(*heavy, current_time, false);
+            player.buy_heavy_gun(*heavy);
         }
         else {
-            Pistol junk;
-            player.buy_pistol(junk ,current_time, true);
+            throw Invalid_GunCategory_Exception();
         }
 
         std::cout << "I hope you can use it" << std::endl;
@@ -161,6 +161,9 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
         std::cout << e << std::endl;
     }
     catch (Duplicate_Heavy_Gun_Exception e) {
+        std::cout << e << std::endl;
+    }
+    catch (Insufficient_Money_Exception e) {
         std::cout << e << std::endl;
     }
 }

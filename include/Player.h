@@ -36,10 +36,8 @@ public:
      * exceptions will be thrown should there be any kind of hazard.
      * 
      * @param pistol the pistol object which the player want's to buy
-     * @param current_time current time of this round
-     * @param invalid_gun determines whether the weapon is legal or not
      */
-    void buy_pistol(Pistol& pistol, const Timer& current_time, const bool invalid_gun); 
+    void buy_pistol(Pistol& pistol); 
 
     /**
      * @brief Buy a new heavy type waepon for the player
@@ -48,10 +46,17 @@ public:
      * exceptions will be thrown should there be any kind of hazard.
      * 
      * @param pistol the heavy object which the player want's to buy
-     * @param current_time current time of this round
-     * @param invalid_gun determines whether the weapon is legal or not
      */
-    void buy_heavy_gun(Heavy_Gun& heavy_gun, const Timer& current_time, const bool invalid_gu); 
+    void buy_heavy_gun(Heavy_Gun& heavy_gun);
+
+    /**
+     * @brief Check if the player is alive and has time to buy a gun
+     * 
+     * @param current_time current time of this round
+     * @return true the player can buy gun
+     * @return false the player can't buy gun
+     */
+    void can_buy(const Timer& current_time);
 
     /**
      * @brief Manage the attacking action for this player

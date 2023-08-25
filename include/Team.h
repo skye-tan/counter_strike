@@ -64,7 +64,7 @@ public:
      * @param weapon_name the weapon's name
      * @return Pistol* the Pistol object
      */
-    Pistol* is_legal_pistol(const std::string weapon_name);
+    Pistol* get_legal_pistol(const std::string weapon_name);
 
     /**
      * @brief Check whether a given weapon is legal pistol for this team or not and returns the
@@ -75,7 +75,7 @@ public:
      * @param weapon_name the weapon's name
      * @return Heavy_Gun* the Pistol object
      */
-    Heavy_Gun* is_legal_heavy(const std::string weapon_name);
+    Heavy_Gun* get_legal_heavy(const std::string weapon_name);
 
     /**
      * @brief Determine whether the team has alive member or not

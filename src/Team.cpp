@@ -32,7 +32,7 @@ bool Team::username_exists(const std::string username) {
     return false;
 }
 
-Pistol* Team::is_legal_pistol(const std::string weapon_name) {
+Pistol* Team::get_legal_pistol(const std::string weapon_name) {
     for (Pistol& pistol : legal_pistols) {
         if (pistol.get_name() == weapon_name) {
             return &pistol;
@@ -41,7 +41,7 @@ Pistol* Team::is_legal_pistol(const std::string weapon_name) {
     return NULL;
 }
 
-Heavy_Gun* Team::is_legal_heavy(const std::string weapon_name) {
+Heavy_Gun* Team::get_legal_heavy(const std::string weapon_name) {
     for (Heavy_Gun& heavy : legal_heavies) {
         if (heavy.get_name() == weapon_name) {
             return &heavy;
