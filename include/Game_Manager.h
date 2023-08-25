@@ -6,6 +6,12 @@
 #ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
 
+/**
+ * @brief Manage different commands
+ * 
+ *   It has access to players and teams for managing them
+ * 
+ */
 class Game_Manager {
 
 public:
