@@ -195,6 +195,7 @@ void Game_Manager::start_new_round() {
     terrorist->new_round(terroris_won);
     counter_terrorist->new_round(!terroris_won);
 
+    current_time = Timer(0, 0, 0);
     current_round++;
 
 }
