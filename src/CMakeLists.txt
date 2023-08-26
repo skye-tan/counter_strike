@@ -49,7 +49,7 @@ set(game_lib_files
     Command_Executer.cpp
 )
 
-if(${generate_libraries})
+if(${enable_testing})
 
     add_library(weapon_lib
                 ${weapon_lib_files}

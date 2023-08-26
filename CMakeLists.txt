@@ -3,18 +3,13 @@ project(MahsanProject)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(generate_libraries FALSE)
-set(testing FALSE)
-set(weapon_lib_test FALSE)
-set(exception_lib_test FALSE)
-set(player_lib_test FALSE)
-set(game_lib_test FALSE)
+set(enable_testing OFF CACHE BOOL "An user-specified option for testing the classes.")
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_subdirectory(src)
 
-if(${testing})
+if(${enable_testing})
     add_subdirectory(libs/googletest)
     add_subdirectory(tests)
 endif()
