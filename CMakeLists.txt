@@ -1,8 +1,9 @@
 ﻿
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.4)
 project(MahsanProject)
 
 set(CMAKE_CXX_STANDARD 14)
+set(${CMAKE_CXX_COMPILER_LAUNCHER} ccache)
 
 set(enable_testing OFF CACHE BOOL "A user-specified option for testing the classes." FORCE)
 
