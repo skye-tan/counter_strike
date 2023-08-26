@@ -125,26 +125,23 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
 
         bool is_terrorist = terrorist->username_exists(username);
 
-        Pistol* pistol = NULL;
-        Heavy_Gun* heavy = NULL;
-
         if (is_terrorist) {
-            pistol = terrorist->get_legal_pistol(weapon_name);
-            heavy = terrorist->get_legal_heavy(weapon_name); 
+            std::string weapon_type = terrorist->get_weapon_type(weapon_name);
+            if (weapon_type == "pistol") {
+                player.buy_pistol(terrorist->get_legal_pistol(weapon_name));
+            }
+            else {
+                player.buy_heavy_gun(terrorist->get_legal_heavy(weapon_name));
+            }
         }
         else {
-            pistol = counter_terrorist->get_legal_pistol(weapon_name);
-            heavy = counter_terrorist->get_legal_heavy(weapon_name);
-        }
-
-        if (pistol != NULL) {
-            player.buy_pistol(*pistol);
-        }
-        else if (heavy != NULL) {
-            player.buy_heavy_gun(*heavy);
-        }
-        else {
-            throw Invalid_GunCategory_Exception();
+            std::string weapon_type = counter_terrorist->get_weapon_type(weapon_name);
+            if (weapon_type == "heavy") {
+                player.buy_pistol(counter_terrorist->get_legal_pistol(weapon_name));
+            }
+            else {
+                player.buy_heavy_gun(counter_terrorist->get_legal_heavy(weapon_name));
+            }
         }
 
         std::cout << "I hope you can use it" << std::endl;

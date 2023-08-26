@@ -38,22 +38,36 @@ bool Team::username_exists(const std::string username) {
     return false;
 }
 
-Pistol* Team::get_legal_pistol(const std::string weapon_name) {
+Pistol& Team::get_legal_pistol(const std::string weapon_name) {
     for (Pistol& pistol : legal_pistols) {
         if (pistol.get_name() == weapon_name) {
-            return &pistol;
+            return pistol;
         }
     }
-    return NULL;
+    throw Invalid_GunCategory_Exception();
 }
 
-Heavy_Gun* Team::get_legal_heavy(const std::string weapon_name) {
+Heavy_Gun& Team::get_legal_heavy(const std::string weapon_name) {
     for (Heavy_Gun& heavy : legal_heavies) {
         if (heavy.get_name() == weapon_name) {
-            return &heavy;
+            return heavy;
         }
     }
-    return NULL;
+    throw Invalid_GunCategory_Exception();
+}
+
+std::string Team::get_weapon_type(const std::string weapon_name) {
+    for (Heavy_Gun& heavy : legal_heavies) {
+        if (heavy.get_name() == weapon_name) {
+            return "heavy";
+        }
+    }
+    for (Pistol& pistol : legal_pistols) {
+        if (pistol.get_name() == weapon_name) {
+           return "pistol";
+        }
+    }
+    throw Invalid_GunCategory_Exception();
 }
 
 bool Team::has_alive_member() {
