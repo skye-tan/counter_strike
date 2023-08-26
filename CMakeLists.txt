@@ -1,11 +1,14 @@
-﻿cmake_minimum_required(VERSION 3.10)
+﻿
+cmake_minimum_required(VERSION 3.10)
 project(MahsanProject)
 
 set(CMAKE_CXX_STANDARD 14)
 
-set(enable_testing OFF CACHE BOOL "An user-specified option for testing the classes.")
+set(enable_testing OFF CACHE BOOL "A user-specified option for testing the classes." FORCE)
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
+include_directories(${PROJECT_SOURCE_DIR}/include
+                    ${PROJECT_SOURCE_DIR}/include/Exceptions
+)
 
 add_subdirectory(src)
 
