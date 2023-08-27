@@ -5,7 +5,7 @@ project(MahsanProject)
 set(CMAKE_CXX_STANDARD 14)
 set(${CMAKE_CXX_COMPILER_LAUNCHER} ccache)
 
-set(enable_testing OFF CACHE BOOL "A user-specified option for testing the classes." FORCE)
+set(enable_testing OFF CACHE BOOL "A user-specified option to enable unit testing." FORCE)
 
 include_directories(${PROJECT_SOURCE_DIR}/include
                     ${PROJECT_SOURCE_DIR}/include/Exceptions
