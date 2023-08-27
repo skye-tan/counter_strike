@@ -58,23 +58,23 @@ public:
     /**
      * @brief Get the pistol.
      * 
-     * @return Pistol
+     * @return Pistol*
      */
-    Pistol get_pistol() const;
+    Pistol* get_pistol() const;
 
     /**
      * @brief Get the heavy gun.
      * 
-     * @return Heavy_Gun
+     * @return Heavy_Gun*
      */
-    Heavy_Gun get_heavy_gun() const;
+    Heavy_Gun* get_heavy_gun() const;
 
     /**
      * @brief Get the knife.
      * 
-     * @return Knife
+     * @return Knife*
      */
-    Knife get_knife() const;
+    Knife* get_knife() const;
     
 
 private:

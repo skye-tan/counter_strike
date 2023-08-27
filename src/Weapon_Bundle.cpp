@@ -34,20 +34,20 @@ void Weapon_Bundle::remove_heavy_gun() {
     this->heavy_gun = NULL;
 }
 
-Pistol Weapon_Bundle::get_pistol() const {
+Pistol* Weapon_Bundle::get_pistol() const {
     if (pistol == NULL) {
         throw Invalid_GunType_Exception();
     }
-    return *pistol;
+    return pistol;
 }
 
-Heavy_Gun Weapon_Bundle::get_heavy_gun() const {
+Heavy_Gun* Weapon_Bundle::get_heavy_gun() const {
     if (heavy_gun == NULL) {
         throw Invalid_GunType_Exception();
     }
-    return *heavy_gun;
+    return heavy_gun;
 }
 
-Knife Weapon_Bundle::get_knife() const {
-    return *knife;
+Knife* Weapon_Bundle::get_knife() const {
+    return knife;
 }

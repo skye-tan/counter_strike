@@ -75,11 +75,11 @@ public:
      *   Apart from mangement of the properties, this method determines whether the player has died
      * after being attacked or not by returning a boolean type variable.
      * 
-     * @param weapon the weapon used to attack this player
+     * @param damage the amount of damage which the player has been inflicted with
      * @return true the player is dead
      * @return false the player isn't dead
      */
-    bool got_attacked(const Weapon& weapon);
+    bool got_attacked(const int damage);
 
     /**
      * @brief Detemine wheter the player is dead or not

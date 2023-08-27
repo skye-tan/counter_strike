@@ -66,7 +66,7 @@ void Player::attack(Player& attacked, const std::string weapon_type, const bool 
         throw Dead_Attacked_Exception();
     }
 
-    Weapon used_weapon = weapons->get_knife();
+    Weapon* used_weapon = weapons->get_knife();
     if (weapon_type == "pistol") {
         used_weapon = weapons->get_pistol();
     }
@@ -78,16 +78,16 @@ void Player::attack(Player& attacked, const std::string weapon_type, const bool 
         throw Friendly_Fire_Exception();
     }
 
-    if (attacked.got_attacked(used_weapon)) {
+    if (attacked.got_attacked(used_weapon->get_damage())) {
         statistics->increment_kills();
-        statistics->increase_money(used_weapon.get_reward());
+        statistics->increase_money(used_weapon->get_reward());
     }
 
 }
 
-bool Player::got_attacked(const Weapon& weapon) {
+bool Player::got_attacked(const int damage) {
 
-    statistics->decrease_health(weapon.get_damage());
+    statistics->decrease_health(damage);
 
     if (is_dead()) {
         statistics->increment_deaths();

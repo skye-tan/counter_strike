@@ -136,7 +136,7 @@ void Game_Manager::buy(const std::string username, const std::string weapon_name
         }
         else {
             std::string weapon_type = counter_terrorist->get_weapon_type(weapon_name);
-            if (weapon_type == "heavy") {
+            if (weapon_type == "pistol") {
                 player.buy_pistol(counter_terrorist->get_legal_pistol(weapon_name));
             }
             else {
