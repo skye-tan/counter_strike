@@ -202,14 +202,11 @@ std::string Game_Manager::get_winner() {
     bool terrorist_has_alive = terrorist->has_alive_member();
     bool counter_terrorist_has_alive = counter_terrorist->has_alive_member();
 
-    if (!terrorist_has_alive && !counter_terrorist_has_alive) {
-        return "Counter-Terrorist";
-    }
-    else if (counter_terrorist_has_alive) {
-        return "Counter-Terrorist";
+    if (terrorist_has_alive && !counter_terrorist_has_alive) {
+        return "Terrorist";
     }
     else {
-        return "Terrorist";
+        return "Counter-Terrorist";
     }
 
 }
