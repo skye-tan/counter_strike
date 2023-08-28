@@ -1,10 +1,10 @@
 
 #include <iostream>
 #include "Player.h"
-#include "All_Exceptions.h"
+#include "AllExceptions.h"
 #include "gtest/gtest.h"
 
-TEST(Player_Class, Basics) {
+TEST(PlayerClass, Basics) {
 
     Timer timer(1, 42, 123);
     Player test_player("player", 0, timer);
@@ -22,7 +22,7 @@ TEST(Player_Class, Basics) {
 
 }
 
-TEST(Player_Class, Buy_Pistol) {
+TEST(PlayerClass, BuyPistol) {
 
     Timer timer_1(1, 42, 123);
 
@@ -33,7 +33,7 @@ TEST(Player_Class, Buy_Pistol) {
     try {
         test_player.can_buy(timer_1);
     }
-    catch (Dead_Buyer_Exception e) {
+    catch (DeadBuyerException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "deads can not buy");
     }
@@ -43,7 +43,7 @@ TEST(Player_Class, Buy_Pistol) {
     try {
         test_player.can_buy(timer_1);
     }
-    catch (Out_Of_Time_Exception e) {
+    catch (OutOfTimeException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "you are out of time");
     }
@@ -53,7 +53,7 @@ TEST(Player_Class, Buy_Pistol) {
     try {
         test_player.buy_pistol(pistol_1);
     }
-    catch (Duplicate_Pistol_Exception e) {
+    catch (DuplicatePistolException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "you have a pistol");
     }
@@ -63,7 +63,7 @@ TEST(Player_Class, Buy_Pistol) {
     try {
         test_player.buy_pistol(pistol_2);
     }
-    catch (Insufficient_Money_Exception e) {
+    catch (InsufficientMoneyException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "no enough money");
     }
@@ -72,19 +72,19 @@ TEST(Player_Class, Buy_Pistol) {
 
 }
 
-TEST(Player_Class, Buy_Heavy) {
+TEST(PlayerClass, BuyHeavy) {
 
     Timer timer_1(1, 42, 123);
 
     Player test_player("player", 0, timer_1);
-    Heavy_Gun heavy_1("heavy", 1000);
-    Heavy_Gun heavy_2("heavy", 10000);
+    HeavyGun heavy_1("heavy", 1000);
+    HeavyGun heavy_2("heavy", 10000);
 
 
     try {
         test_player.can_buy(timer_1);
     }
-    catch (Dead_Buyer_Exception e) {
+    catch (DeadBuyerException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "deads can not buy");
     }
@@ -94,7 +94,7 @@ TEST(Player_Class, Buy_Heavy) {
     try {
         test_player.can_buy(timer_1);
     }
-    catch (Out_Of_Time_Exception e) {
+    catch (OutOfTimeException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "you are out of time");
     }
@@ -104,7 +104,7 @@ TEST(Player_Class, Buy_Heavy) {
     try {
         test_player.buy_heavy_gun(heavy_1);
     }
-    catch (Duplicate_Heavy_Gun_Exception e) {
+    catch (DuplicateHeavyGunException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "you have a heavy");
     }
@@ -114,7 +114,7 @@ TEST(Player_Class, Buy_Heavy) {
     try {
         test_player.buy_heavy_gun(heavy_2);
     }
-    catch (Insufficient_Money_Exception e) {
+    catch (InsufficientMoneyException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "no enough money");
     }
@@ -123,17 +123,17 @@ TEST(Player_Class, Buy_Heavy) {
 
 }
 
-TEST(Player_Class, Attack_Action) {
+TEST(PlayerClass, AttackAction) {
 
     Timer timer(1, 42, 123);
     Player test_attacker("player", 0, timer);
     Player test_attacked("player", 0, timer);
-    Heavy_Gun heavy("heavy", 1000);
+    HeavyGun heavy("heavy", 1000);
 
     try {
         test_attacker.attack(test_attacked, "heavy", true);
     }
-    catch (Dead_Attacker_Exception e) {
+    catch (DeadAttackerException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "attacker is dead");
     }
@@ -143,7 +143,7 @@ TEST(Player_Class, Attack_Action) {
     try {
         test_attacker.attack(test_attacked, "heavy", true);
     }
-    catch (Dead_Attacked_Exception e) {
+    catch (DeadAttackedException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "attacked is dead");
     }
@@ -153,7 +153,7 @@ TEST(Player_Class, Attack_Action) {
     try {
         test_attacker.attack(test_attacked, "heavy", true);
     }
-    catch (Invalid_GunType_Exception e) {
+    catch (InvalidGunTypeException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "no such gun");
     }
@@ -164,7 +164,7 @@ TEST(Player_Class, Attack_Action) {
     try {
         test_attacker.attack(test_attacked, "heavy", true);
     }
-    catch (Friendly_Fire_Exception e) {
+    catch (FriendlyFireException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "friendly fire");
     }

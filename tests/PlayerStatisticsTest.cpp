@@ -1,12 +1,12 @@
 
 #include <iostream>
-#include "Player_Statistics.h"
-#include "All_Exceptions.h"
+#include "PlayerStatistics.h"
+#include "AllExceptions.h"
 #include "gtest/gtest.h"
 
-TEST(Player_Statistics_Class, Getters) {
+TEST(PlayerStatisticsClass, Getters) {
 
-    Player_Statistics test_statistics;
+    PlayerStatistics test_statistics;
 
     EXPECT_EQ(test_statistics.get_kills(), 0);
     EXPECT_EQ(test_statistics.get_deaths(), 0);
@@ -18,9 +18,9 @@ TEST(Player_Statistics_Class, Getters) {
 
 }
 
-TEST(Player_Statistics_Class, Deaths_and_Kills_Modification) {
+TEST(PlayerStatisticsClass, DeathsAndKillsModification) {
 
-    Player_Statistics test_statistics;
+    PlayerStatistics test_statistics;
 
     test_statistics.increment_kills();
     test_statistics.increment_kills();
@@ -31,9 +31,9 @@ TEST(Player_Statistics_Class, Deaths_and_Kills_Modification) {
 
 }
 
-TEST(Player_Statistics_Class, Health_Modification) {
+TEST(PlayerStatisticsClass, HealthModification) {
 
-    Player_Statistics test_statistics;
+    PlayerStatistics test_statistics;
 
     test_statistics.set_health_min();
     EXPECT_EQ(test_statistics.get_health(), 0);
@@ -49,9 +49,9 @@ TEST(Player_Statistics_Class, Health_Modification) {
 
 }
 
-TEST(Player_Statistics_Class, Money_Modification) {
+TEST(PlayerStatisticsClass, MoneyModification) {
 
-    Player_Statistics test_statistics;
+    PlayerStatistics test_statistics;
 
     test_statistics.increase_money(1000);
     EXPECT_EQ(test_statistics.has_enough_money(1500), true);
@@ -66,17 +66,17 @@ TEST(Player_Statistics_Class, Money_Modification) {
     try {
         test_statistics.decrease_money(2000);
     }
-    catch (Insufficient_Money_Exception e) {
+    catch (InsufficientMoneyException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "no enough money");
     }
 
 }
 
-TEST(Player_Statistics_Class, Operators) {
+TEST(PlayerStatisticsClass, Operators) {
 
-    Player_Statistics test_statistics_1;
-    Player_Statistics test_statistics_2;
+    PlayerStatistics test_statistics_1;
+    PlayerStatistics test_statistics_2;
 
     test_statistics_1.increment_kills();
     EXPECT_EQ(test_statistics_1 > test_statistics_2, true);

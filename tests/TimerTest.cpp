@@ -2,7 +2,7 @@
 #include "Timer.h"
 #include "gtest/gtest.h"
 
-TEST(Timer_Class, Getters) {
+TEST(TimerClass, Getters) {
 
     Timer test_timer(2, 25, 178);
 
@@ -12,7 +12,7 @@ TEST(Timer_Class, Getters) {
 
 }
 
-TEST(Timer_Class, Operators) {
+TEST(TimerClass, Operators) {
 
     Timer test_timer_1(2, 25, 178);
     Timer test_timer_2(1, 25, 178);

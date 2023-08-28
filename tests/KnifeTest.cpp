@@ -2,7 +2,7 @@
 #include "Knife.h"
 #include "gtest/gtest.h"
 
-TEST(Knife_Class, Getters) {
+TEST(KnifeClass, Getters) {
 
     Knife test_Knife;
 

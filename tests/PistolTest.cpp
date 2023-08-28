@@ -2,7 +2,7 @@
 #include "Pistol.h"
 #include "gtest/gtest.h"
 
-TEST(Pistol_Class, Getters) {
+TEST(PistolClass, Getters) {
 
     Pistol test_pistol("Revolver", 600, 51, 150);
 

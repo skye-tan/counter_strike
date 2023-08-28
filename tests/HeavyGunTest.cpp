@@ -1,10 +1,10 @@
 
-#include "Heavy_Gun.h"
+#include "HeavyGun.h"
 #include "gtest/gtest.h"
 
-TEST(Heavy_Gun_Class, Getters) {
+TEST(HeavyGunClass, Getters) {
 
-    Heavy_Gun test_heavy_gun("AK", 2700, 31, 100);
+    HeavyGun test_heavy_gun("AK", 2700, 31, 100);
 
     EXPECT_EQ(test_heavy_gun.get_name(), "AK");
     EXPECT_EQ(test_heavy_gun.get_price(), 2700);

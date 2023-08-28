@@ -1,13 +1,13 @@
 
 #include <iostream>
 #include "Team.h"
-#include "All_Exceptions.h"
+#include "AllExceptions.h"
 #include "gtest/gtest.h"
 
-TEST(Player_Class, Player_Management) {
+TEST(PlayerClass, PlayerManagement) {
 
     std::vector<Pistol> legal_pistols;
-    std::vector<Heavy_Gun> legal_heavies;
+    std::vector<HeavyGun> legal_heavies;
 
     Team test_team(legal_pistols, legal_heavies);
 
@@ -25,7 +25,7 @@ TEST(Player_Class, Player_Management) {
     try {
         test_team.add_player(player_2);
     }
-    catch (Duplicate_UserName_Exception e) {
+    catch (DuplicateUserNameException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "you are already in this game");
     }
@@ -41,7 +41,7 @@ TEST(Player_Class, Player_Management) {
     try {
         Player recived_player = test_team.get_player("mohammad");
     }
-    catch (Invalid_UserName_Exception e) {
+    catch (InvalidUserNameException e) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "invalid username");
     }
@@ -54,20 +54,20 @@ TEST(Player_Class, Player_Management) {
     
 }
 
-TEST(Player_Class, Weapon_Management) {
+TEST(PlayerClass, WeaponManagement) {
 
     std::vector<Pistol> legal_pistols;
     legal_pistols.push_back(Pistol("Revolver", 600, 51 ,150));
     legal_pistols.push_back(Pistol("Glock-18", 300, 11 ,200));
 
-    std::vector<Heavy_Gun> legal_heavies;
-    legal_heavies.push_back(Heavy_Gun("AK", 2700, 31 ,100));
-    legal_heavies.push_back(Heavy_Gun("AWP", 4300, 110 ,50));
+    std::vector<HeavyGun> legal_heavies;
+    legal_heavies.push_back(HeavyGun("AK", 2700, 31 ,100));
+    legal_heavies.push_back(HeavyGun("AWP", 4300, 110 ,50));
 
     Team test_team(legal_pistols, legal_heavies);
 
     Pistol pistol = test_team.get_legal_pistol("Revolver");
-    Heavy_Gun heavy = test_team.get_legal_heavy("AK");
+    HeavyGun heavy = test_team.get_legal_heavy("AK");
 
     EXPECT_EQ(pistol.get_name(), "Revolver");
     EXPECT_EQ(heavy.get_name(), "AK");
