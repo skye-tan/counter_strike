@@ -24,7 +24,7 @@ public:
      * @param input_legal_pistols vector containing the legal pistol guns of the team
      * @param input_legal_heavies vector containing the legal heavy guns of the team
      */
-    Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<Heavy_Gun>& input_legal_heavies);
+    Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<HeavyGun>& input_legal_heavies);
 
     /**
      * @brief Destroy the Team object
@@ -75,9 +75,9 @@ public:
      * Heavy_Gun object.
      * 
      * @param weapon_name the weapon's name
-     * @return Heavy_Gun& the Heavy_Gun object
+     * @return HeavyGun& the Heavy_Gun object
      */
-    Heavy_Gun& get_legal_heavy(const std::string weapon_name);
+    HeavyGun& get_legal_heavy(const std::string weapon_name);
 
     /**
      * @brief Get the weapon type of a given weapon by name
@@ -130,7 +130,7 @@ private:
      * @brief  A vector contaning the legal heavy guns for the team
      * 
      */
-    std::vector<Heavy_Gun> legal_heavies;
+    std::vector<HeavyGun> legal_heavies;
 
 };
 

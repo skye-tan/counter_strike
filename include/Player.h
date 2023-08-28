@@ -1,15 +1,15 @@
 
 #include <string>
-#include "Player_Statistics.h"
-#include "Weapon_Bundle.h"
-#include "All_Exceptions.h"
+#include "PlayerStatistics.h"
+#include "WeaponBundle.h"
+#include "AllExceptions.h"
 #include "Timer.h"
 
 #ifndef PLAYER_H
 #define PLAYER_H
 
 /**
- * @brief Store the information amput the player
+ * @brief Store information about the player
  * 
  *   Manages the actions which can be done by a player and like buying weapons,
  * attacking and getting attacked and stores the specifications of statistic information
@@ -47,9 +47,9 @@ public:
      *   All the problems that might happen are checked and proper
      * exceptions will be thrown should there be any kind of hazard.
      * 
-     * @param pistol the heavy object which the player want's to buy
+     * @param heavy_gun the heavy gun object which the player want's to buy
      */
-    void buy_heavy_gun(Heavy_Gun& heavy_gun);
+    void buy_heavy_gun(HeavyGun& heavy_gun);
 
     /**
      * @brief Check if the player is alive and has time to buy a gun
@@ -120,9 +120,9 @@ public:
     /**
      * @brief Get a copy of the player's statistics
      * 
-     * @return Player_Statistics a copy of the player's statistics
+     * @return PlayerStatistics a copy of the player's statistics
      */
-    Player_Statistics get_statistics() const;
+    PlayerStatistics get_statistics() const;
 
     /**
      * @brief Get the time when the player joined the game
@@ -159,17 +159,17 @@ private:
     Timer join_time;
 
     /**
-     * @brief A Weapon_Bundle object containing the player's weapons
+     * @brief A WeaponBundle object containing the player's weapons
      * 
      */
-    Weapon_Bundle* weapons;
+    WeaponBundle* weapons;
 
     /**
      * @brief A Player_Statistics object responsible for mangement
      * of the player's statistic information
      * 
      */
-    Player_Statistics* statistics;
+    PlayerStatistics* statistics;
 
     static Timer join_dead_line;
     static Timer shop_dead_line;

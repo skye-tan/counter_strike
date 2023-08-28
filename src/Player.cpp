@@ -1,5 +1,6 @@
 
 #include "Player.h"
+#include "AllExceptions.h"
 
 Timer Player::join_dead_line = Timer(0, 3, 0);
 Timer Player::shop_dead_line = Timer(0, 45, 0);
@@ -7,8 +8,8 @@ Timer Player::shop_dead_line = Timer(0, 45, 0);
 Player::Player(const std::string input_username, const int input_join_round, Timer input_join_time) :
     username(input_username), join_round(input_join_round), join_time(input_join_time) {
         
-        statistics = new Player_Statistics;
-        weapons = new Weapon_Bundle;
+        statistics = new PlayerStatistics;
+        weapons = new WeaponBundle;
 
         if (!(join_dead_line > join_time)) {
             statistics->set_health_min();
@@ -27,20 +28,20 @@ void Player::buy_pistol(Pistol& pistol) {
 
     if (!statistics->has_enough_money(pistol.get_price())) {
         weapons->remove_pistol();
-        throw Insufficient_Money_Exception();
+        throw InsufficientMoneyException();
     }
 
     statistics->decrease_money(pistol.get_price());
 
 }
 
-void Player::buy_heavy_gun(Heavy_Gun& heavy_gun) {
+void Player::buy_heavy_gun(HeavyGun& heavy_gun) {
 
     weapons->add_heavy_gun(heavy_gun);
 
     if (!statistics->has_enough_money(heavy_gun.get_price())) {
         weapons->remove_heavy_gun();
-        throw Insufficient_Money_Exception();
+        throw InsufficientMoneyException();
     }
 
     statistics->decrease_money(heavy_gun.get_price());
@@ -49,21 +50,21 @@ void Player::buy_heavy_gun(Heavy_Gun& heavy_gun) {
 
 void Player::can_buy(const Timer& current_time) {
     if (is_dead()) {
-        throw Dead_Buyer_Exception();
+        throw DeadBuyerException();
     }
     if (!(shop_dead_line > current_time)) {
-        throw Out_Of_Time_Exception();
+        throw OutOfTimeException();
     }
 }
 
 void Player::attack(Player& attacked, const std::string weapon_type, const bool same_team) {
 
     if (is_dead()) {
-        throw Dead_Attacker_Exception();
+        throw DeadAttackerException();
     }
 
     if (attacked.is_dead()) {
-        throw Dead_Attacked_Exception();
+        throw DeadAttackedException();
     }
 
     Weapon* used_weapon = weapons->get_knife();
@@ -75,7 +76,7 @@ void Player::attack(Player& attacked, const std::string weapon_type, const bool 
     }
 
     if (same_team) {
-        throw Friendly_Fire_Exception();
+        throw FriendlyFireException();
     }
 
     if (attacked.got_attacked(used_weapon->get_damage())) {
@@ -133,7 +134,7 @@ std::string Player::get_username() const {
     return username;
 }
 
-Player_Statistics Player::get_statistics() const {
+PlayerStatistics Player::get_statistics() const {
     return *statistics;
 }
 

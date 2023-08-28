@@ -1,8 +1,8 @@
 
-#include "Command_Executer.h"
+#include "CommandExecuter.h"
 
 int main() {
-    Command_Executer command_executer;
+    CommandExecuter command_executer;
     command_executer.start();
     return 0;
 }

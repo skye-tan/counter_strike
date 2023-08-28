@@ -1,52 +1,52 @@
 ﻿
 set(weapon_lib_files
-            Weapon_Bundle.cpp
+            WeaponBundle.cpp
             Weapon.cpp
             Pistol.cpp
-            Heavy_Gun.cpp
+            HeavyGun.cpp
             Knife.cpp
 )
 
 set(invalid_exceptions
-    Exceptions/Invalid_Attribute_Exception.cpp
-    Exceptions/Invalid_UserName_Exception.cpp
-    Exceptions/Invalid_GunType_Exception.cpp
-    Exceptions/Invalid_GunCategory_Exception.cpp
+    Exceptions/InvalidAttributeException.cpp
+    Exceptions/InvalidUserNameException.cpp
+    Exceptions/InvalidGunTypeException.cpp
+    Exceptions/InvalidGunCategoryException.cpp
 )
 set(dead_exceptions
-    Exceptions/Dead_Player_Exception.cpp
-    Exceptions/Dead_Buyer_Exception.cpp
-    Exceptions/Dead_Attacker_Exception.cpp
-    Exceptions/Dead_Attacked_Exception.cpp
+    Exceptions/DeadPlayerException.cpp
+    Exceptions/DeadBuyerException.cpp
+    Exceptions/DeadAttackerException.cpp
+    Exceptions/DeadAttackedException.cpp
 )
 set(duplicate_exceptions
-    Exceptions/Duplicate_Attribute_Exception.cpp
-    Exceptions/Duplicate_UserName_Exception.cpp
-    Exceptions/Duplicate_WeaponType_Exception.cpp
-    Exceptions/Duplicate_Heavy_Gun_Exception.cpp
-    Exceptions/Duplicate_Pistol_Exception.cpp    
+    Exceptions/DuplicateAttributeException.cpp
+    Exceptions/DuplicateUserNameException.cpp
+    Exceptions/DuplicateWeaponTypeException.cpp
+    Exceptions/DuplicateHeavyGunException.cpp
+    Exceptions/DuplicatePistolException.cpp    
 )
 set(exception_lib_files
-    Exceptions/Custom_Exception.cpp
-    Exceptions/Insufficient_Money_Exception.cpp
-    Exceptions/Full_Team_Exception.cpp
-    Exceptions/Friendly_Fire_Exception.cpp
-    Exceptions/Out_Of_Time_Exception.cpp
+    Exceptions/CustomException.cpp
+    Exceptions/InsufficientMoneyException.cpp
+    Exceptions/FullTeamException.cpp
+    Exceptions/FriendlyFireException.cpp
+    Exceptions/OutOfTimeException.cpp
     ${invalid_exceptions}
     ${dead_exceptions}
     ${duplicate_exceptions}
 )
 
 set(player_lib_files
-    Player_Statistics.cpp
+    PlayerStatistics.cpp
     Player.cpp
     Team.cpp
 )
 
 set(game_lib_files
     Timer.cpp
-    Game_Manager.cpp
-    Command_Executer.cpp
+    GameManager.cpp
+    CommandExecuter.cpp
 )
 
 if(${enable_testing})

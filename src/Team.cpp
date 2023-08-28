@@ -1,7 +1,8 @@
 
 #include "Team.h"
+#include "AllExceptions.h"
 
-Team::Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<Heavy_Gun>& input_legal_heavies) : 
+Team::Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<HeavyGun>& input_legal_heavies) : 
         legal_pistols(input_legal_pistols), legal_heavies(input_legal_heavies) {}
 
 Team::~Team() {
@@ -16,15 +17,15 @@ Player& Team::get_player(const std::string username) {
             return player;
         }
     }
-    throw Invalid_UserName_Exception();
+    throw InvalidUserNameException();
 }
 
 void Team::add_player(const Player& player) {
     if (username_exists(player.get_username())) {
-        throw Duplicate_UserName_Exception();
+        throw DuplicateUserNameException();
     }
     if (members.size() == 10) {
-        throw Full_Team_Exception();
+        throw FullTeamException();
     }
     members.push_back(player);
 }
@@ -44,20 +45,20 @@ Pistol& Team::get_legal_pistol(const std::string weapon_name) {
             return pistol;
         }
     }
-    throw Invalid_GunCategory_Exception();
+    throw InvalidGunCategoryException();
 }
 
-Heavy_Gun& Team::get_legal_heavy(const std::string weapon_name) {
-    for (Heavy_Gun& heavy : legal_heavies) {
+HeavyGun& Team::get_legal_heavy(const std::string weapon_name) {
+    for (HeavyGun& heavy : legal_heavies) {
         if (heavy.get_name() == weapon_name) {
             return heavy;
         }
     }
-    throw Invalid_GunCategory_Exception();
+    throw InvalidGunCategoryException();
 }
 
 std::string Team::get_weapon_type(const std::string weapon_name) {
-    for (Heavy_Gun& heavy : legal_heavies) {
+    for (HeavyGun& heavy : legal_heavies) {
         if (heavy.get_name() == weapon_name) {
             return "heavy";
         }
@@ -67,7 +68,7 @@ std::string Team::get_weapon_type(const std::string weapon_name) {
            return "pistol";
         }
     }
-    throw Invalid_GunCategory_Exception();
+    throw InvalidGunCategoryException();
 }
 
 bool Team::has_alive_member() {
