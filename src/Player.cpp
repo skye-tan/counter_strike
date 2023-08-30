@@ -93,15 +93,17 @@ bool Player::is_dead() const {
 }
 
 void Player::new_round(const bool has_won) {
-    statistics.set_health_max();
     if (has_won) {
         statistics.increase_money(2700);
     }
     else {
         statistics.increase_money(2400);
+    }
+    if (is_dead()) {
         weapons.remove_heavy_gun();
         weapons.remove_pistol();
     }
+    statistics.set_health_max();
 }
 
 bool Player::operator > (const Player& second_player) {
