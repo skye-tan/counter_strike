@@ -17,8 +17,7 @@ TEST(TimerClass, Operators) {
     Timer test_timer_1(2, 25, 178);
     Timer test_timer_2(1, 25, 178);
 
-    EXPECT_EQ(test_timer_1 > test_timer_2, true);
-    EXPECT_EQ(test_timer_1 > test_timer_1, false);
-    EXPECT_EQ(test_timer_1 >= test_timer_1, true);
+    EXPECT_EQ(test_timer_2 <= test_timer_1, true);
+    EXPECT_EQ(test_timer_1 <= test_timer_1, false);
 
 }

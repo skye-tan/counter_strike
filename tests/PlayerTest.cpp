@@ -173,7 +173,7 @@ TEST(PlayerClass, AttackAction) {
 
 }
 
-TEST(Player_Class, Operators) {
+TEST(PlayerClass, Operators) {
     
     Timer timer_1(0, 2, 100);
     Timer timer_2(1, 42, 123);
