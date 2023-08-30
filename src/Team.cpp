@@ -1,7 +1,8 @@
 
 #include "Team.h"
+#include "AllExceptions.h"
 
-Team::Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<Heavy_Gun>& input_legal_heavies) : 
+Team::Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<HeavyGun>& input_legal_heavies) : 
         legal_pistols(input_legal_pistols), legal_heavies(input_legal_heavies) {}
 
 Player& Team::get_player(const std::string username) {
@@ -10,15 +11,15 @@ Player& Team::get_player(const std::string username) {
             return player;
         }
     }
-    throw Invalid_UserName_Exception();
+    throw InvalidUserNameException();
 }
 
 void Team::add_player(const Player& player) {
     if (username_exists(player.get_username())) {
-        throw Duplicate_UserName_Exception();
+        throw DuplicateUserNameException();
     }
     if (members.size() == 10) {
-        throw Full_Team_Exception();
+        throw FullTeamException();
     }
     members.push_back(player);
 }
@@ -32,22 +33,36 @@ bool Team::username_exists(const std::string username) {
     return false;
 }
 
-Pistol* Team::is_legal_pistol(const std::string weapon_name) {
+Pistol& Team::get_legal_pistol(const std::string weapon_name) {
     for (Pistol& pistol : legal_pistols) {
         if (pistol.get_name() == weapon_name) {
-            return &pistol;
+            return pistol;
         }
     }
-    return NULL;
+    throw InvalidGunCategoryException();
 }
 
-Heavy_Gun* Team::is_legal_heavy(const std::string weapon_name) {
-    for (Heavy_Gun& heavy : legal_heavies) {
+HeavyGun& Team::get_legal_heavy(const std::string weapon_name) {
+    for (HeavyGun& heavy : legal_heavies) {
         if (heavy.get_name() == weapon_name) {
-            return &heavy;
+            return heavy;
         }
     }
-    return NULL;
+    throw InvalidGunCategoryException();
+}
+
+std::string Team::get_weapon_type(const std::string weapon_name) {
+    for (HeavyGun& heavy : legal_heavies) {
+        if (heavy.get_name() == weapon_name) {
+            return "heavy";
+        }
+    }
+    for (Pistol& pistol : legal_pistols) {
+        if (pistol.get_name() == weapon_name) {
+           return "pistol";
+        }
+    }
+    throw InvalidGunCategoryException();
 }
 
 bool Team::has_alive_member() {
@@ -73,10 +88,12 @@ std::stringstream Team::get_ranking() {
 
     std::stringstream ranking;
 
-    for (int i = 0; i < members.size(); i++) {
-        ranking << i + 1 << " " << members[i].get_username() << " " <<
-                members[i].get_statistics().get_kills() << " " <<
-                members[i].get_statistics().get_deaths() << std::endl;
+    int counter = 1;
+    for (Player& player : members) {
+        ranking << counter << " " << player.get_username() << " " <<
+                player.get_statistics().get_kills() << " " <<
+                player.get_statistics().get_deaths() << std::endl;
+        counter++;
     }
 
     return ranking;

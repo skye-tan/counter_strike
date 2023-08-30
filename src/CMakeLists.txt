@@ -1,70 +1,73 @@
 ﻿
-
 set(weapon_lib_files
-            Weapon_Bundle.cpp
+            WeaponBundle.cpp
             Weapon.cpp
             Pistol.cpp
-            Heavy_Gun.cpp
+            HeavyGun.cpp
             Knife.cpp
 )
-add_library(weapon_lib
-            ${weapon_lib_files}
-)
-
 
 set(invalid_exceptions
-    Invalid_Attribute_Exception.cpp
-    Invalid_UserName_Exception.cpp
-    Invalid_GunType_Exception.cpp
-    Invalid_GunCategory_Exception.cpp
+    Exceptions/InvalidAttributeException.cpp
+    Exceptions/InvalidUserNameException.cpp
+    Exceptions/InvalidGunTypeException.cpp
+    Exceptions/InvalidGunCategoryException.cpp
 )
 set(dead_exceptions
-    Dead_Player_Exception.cpp
-    Dead_Buyer_Exception.cpp
-    Dead_Attacker_Exception.cpp
-    Dead_Attacked_Exception.cpp
+    Exceptions/DeadPlayerException.cpp
+    Exceptions/DeadBuyerException.cpp
+    Exceptions/DeadAttackerException.cpp
+    Exceptions/DeadAttackedException.cpp
 )
 set(duplicate_exceptions
-    Duplicate_Attribute_Exception.cpp
-    Duplicate_UserName_Exception.cpp
-    Duplicate_WeaponType_Exception.cpp
-    Duplicate_Heavy_Gun_Exception.cpp
-    Duplicate_Pistol_Exception.cpp    
+    Exceptions/DuplicateAttributeException.cpp
+    Exceptions/DuplicateUserNameException.cpp
+    Exceptions/DuplicateWeaponTypeException.cpp
+    Exceptions/DuplicateHeavyGunException.cpp
+    Exceptions/DuplicatePistolException.cpp    
 )
 set(exception_lib_files
-    Custom_Exception.cpp
-    Insufficient_Money_Exception.cpp
-    Full_Team_Exception.cpp
-    Friendly_Fire_Exception.cpp
-    Out_Of_Time_Exception.cpp
+    Exceptions/CustomException.cpp
+    Exceptions/InsufficientMoneyException.cpp
+    Exceptions/FullTeamException.cpp
+    Exceptions/FriendlyFireException.cpp
+    Exceptions/OutOfTimeException.cpp
     ${invalid_exceptions}
     ${dead_exceptions}
     ${duplicate_exceptions}
 )
-add_library(exception_lib
-            ${exception_lib_files}
-)
-
 
 set(player_lib_files
-    Player_Statistics.cpp
+    PlayerStatistics.cpp
     Player.cpp
     Team.cpp
 )
-add_library(player_lib
-            ${player_lib_files}
-)
-
 
 set(game_lib_files
     Timer.cpp
-    Game_Manager.cpp
-    Command_Executer.cpp
-)
-add_library(game_lib
-            ${game_lib_files}
+    GameManager.cpp
+    CommandExecuter.cpp
 )
 
+if(${enable_testing})
+
+    add_library(weapon_lib
+                ${weapon_lib_files}
+    )
+
+    add_library(player_lib
+                ${player_lib_files}
+    )
+
+    add_library(game_lib
+                ${game_lib_files}
+    )   
+
+    add_library(exception_lib
+                ${exception_lib_files}
+    )
+
+endif()
 
 add_executable(main
             main.cpp
@@ -73,4 +76,3 @@ add_executable(main
             ${player_lib_files} 
             ${game_lib_files}   
 )
-

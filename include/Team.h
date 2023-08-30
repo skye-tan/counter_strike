@@ -24,7 +24,7 @@ public:
      * @param input_legal_pistols vector containing the legal pistol guns of the team
      * @param input_legal_heavies vector containing the legal heavy guns of the team
      */
-    Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<Heavy_Gun>& input_legal_heavies);
+    Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<HeavyGun>& input_legal_heavies);
 
     /**
      * @brief Get a specified player by username
@@ -59,23 +59,27 @@ public:
      * @brief Check whether a given weapon is legal pistol for this team or not and returns the
      * Pistol object.
      * 
-     *   Returns NULL if the weapon doesn't exist.
-     * 
      * @param weapon_name the weapon's name
-     * @return Pistol* the Pistol object
+     * @return Pistol& the Pistol object
      */
-    Pistol* is_legal_pistol(const std::string weapon_name);
+    Pistol& get_legal_pistol(const std::string weapon_name);
 
     /**
      * @brief Check whether a given weapon is legal pistol for this team or not and returns the
      * Heavy_Gun object.
      * 
-     *   Returns NULL if the weapon doesn't exist.
+     * @param weapon_name the weapon's name
+     * @return HeavyGun& the Heavy_Gun object
+     */
+    HeavyGun& get_legal_heavy(const std::string weapon_name);
+
+    /**
+     * @brief Get the weapon type of a given weapon by name
      * 
      * @param weapon_name the weapon's name
-     * @return Heavy_Gun* the Pistol object
+     * @return std::string the type of the weapon
      */
-    Heavy_Gun* is_legal_heavy(const std::string weapon_name);
+    std::string get_weapon_type(const std::string weapon_name);
 
     /**
      * @brief Determine whether the team has alive member or not
@@ -120,7 +124,7 @@ private:
      * @brief  A vector contaning the legal heavy guns for the team
      * 
      */
-    std::vector<Heavy_Gun> legal_heavies;
+    std::vector<HeavyGun> legal_heavies;
 
 };
 

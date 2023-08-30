@@ -27,19 +27,10 @@ public:
      * @brief Compares two Timer objects
      * 
      * @param timer the second Time object
-     * @return true this stored time is latter to the second one
-     * @return false the second stored time us latter to this one
+     * @return true the second stored time is latter to this one or they are equal
+     * @return false this stored time is after to the second one
      */
-    bool operator > (const Timer& timer);
-
-    /**
-     * @brief Compares two Timer objects
-     * 
-     * @param timer the second Time object
-     * @return true this stored time is latter to the second one or they are equal
-     * @return false the second stored time us latter to this one
-     */
-    bool operator >= (const Timer& timer);
+    bool operator <= (const Timer& timer);
 
     /**
      * @brief Get the minutes
