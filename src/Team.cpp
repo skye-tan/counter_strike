@@ -5,12 +5,6 @@
 Team::Team(const std::vector<Pistol>& input_legal_pistols, const std::vector<HeavyGun>& input_legal_heavies) : 
         legal_pistols(input_legal_pistols), legal_heavies(input_legal_heavies) {}
 
-Team::~Team() {
-    for (Player& player : members) {
-        player.free_memory();
-    }
-}
-
 Player& Team::get_player(const std::string username) {
     for (Player& player : members) {
         if (player.get_username() == username) {
