@@ -5,11 +5,7 @@
 WeaponBundle::WeaponBundle() {
     pistol = NULL;
     heavy_gun = NULL;
-    knife = new Knife();
-}
-
-WeaponBundle::~WeaponBundle() {
-    delete knife;
+    knife = Knife::get_instance();
 }
 
 void WeaponBundle::add_pistol(Pistol& pistol) {

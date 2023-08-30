@@ -28,7 +28,7 @@ public:
 private:
 
     /**
-     * @brief A pointer to a GameManager object for executing commands
+     * @brief A GameManager object for executing commands
      * 
      */
     GameManager game_manager;

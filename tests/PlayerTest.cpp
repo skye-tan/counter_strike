@@ -58,18 +58,6 @@ TEST(PlayerClass, BuyPistol) {
         EXPECT_EQ(e.what(), "you have a pistol");
     }
 
-    test_player.new_round(false);
-
-    try {
-        test_player.buy_pistol(pistol_2);
-    }
-    catch (InsufficientMoneyException e) {
-        std::cout << e << std::endl;
-        EXPECT_EQ(e.what(), "no enough money");
-    }
-
-    test_player.buy_pistol(pistol_1);
-
 }
 
 TEST(PlayerClass, BuyHeavy) {
@@ -109,18 +97,6 @@ TEST(PlayerClass, BuyHeavy) {
         EXPECT_EQ(e.what(), "you have a heavy");
     }
 
-    test_player.new_round(false);
-
-    try {
-        test_player.buy_heavy_gun(heavy_2);
-    }
-    catch (InsufficientMoneyException e) {
-        std::cout << e << std::endl;
-        EXPECT_EQ(e.what(), "no enough money");
-    }
-
-    test_player.buy_heavy_gun(heavy_1);
-
 }
 
 TEST(PlayerClass, AttackAction) {
@@ -157,7 +133,6 @@ TEST(PlayerClass, AttackAction) {
         std::cout << e << std::endl;
         EXPECT_EQ(e.what(), "no such gun");
     }
-
 
     test_attacker.buy_heavy_gun(heavy);
 

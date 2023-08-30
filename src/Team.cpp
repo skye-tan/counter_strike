@@ -88,10 +88,12 @@ std::stringstream Team::get_ranking() {
 
     std::stringstream ranking;
 
-    for (int i = 0; i < members.size(); i++) {
-        ranking << i + 1 << " " << members[i].get_username() << " " <<
-                members[i].get_statistics().get_kills() << " " <<
-                members[i].get_statistics().get_deaths() << std::endl;
+    int counter = 1;
+    for (Player& player : members) {
+        ranking << counter << " " << player.get_username() << " " <<
+                player.get_statistics().get_kills() << " " <<
+                player.get_statistics().get_deaths() << std::endl;
+        counter++;
     }
 
     return ranking;

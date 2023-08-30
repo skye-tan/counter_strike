@@ -34,6 +34,7 @@ GameManager::GameManager() :
 GameManager::~GameManager() {
     delete terrorist;
     delete counter_terrorist;
+    Knife::delete_instance();
 }
 
 void GameManager::add_user(const std::string username, const std::string team, const std::string time) {
