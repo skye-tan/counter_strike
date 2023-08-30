@@ -66,7 +66,7 @@ void GameManager::add_user(const std::string username, const std::string team, c
 void GameManager::get_money(const std::string username, const std::string time) {
     update_current_time(time);
     try {
-        Player player = find_player(username);
+        Player& player = find_player(username);
         std::cout << player.get_statistics().get_money() << std::endl;
     }
     catch (InvalidUserNameException e) {
@@ -77,7 +77,7 @@ void GameManager::get_money(const std::string username, const std::string time) 
 void GameManager::get_health(const std::string username, const std::string time) {
     update_current_time(time);
     try {
-        Player player = find_player(username);
+        Player& player = find_player(username);
         std::cout << player.get_statistics().get_health() << std::endl;
     }
     catch (InvalidUserNameException e) {
@@ -89,8 +89,8 @@ void GameManager::tap(const std::string attacker, const std::string attacked, co
     update_current_time(time);
     try {
 
-        Player player_attacker = find_player(attacker);
-        Player player_attacked = find_player(attacked);
+        Player& player_attacker = find_player(attacker);
+        Player& player_attacked = find_player(attacked);
 
         bool same_team = (terrorist->username_exists(attacker) && terrorist->username_exists(attacked)) ||
         (counter_terrorist->username_exists(attacker) && counter_terrorist->username_exists(attacked));
@@ -121,7 +121,7 @@ void GameManager::buy(const std::string username, const std::string weapon_name,
     update_current_time(time);
     try {
 
-        Player player = find_player(username);
+        Player& player = find_player(username);
         player.can_buy(current_time);
 
         bool is_terrorist = terrorist->username_exists(username);
@@ -223,7 +223,7 @@ void GameManager::update_current_time(std::string time) {
 
     std::getline(time_stream, minutes, ':');
     std::getline(time_stream, seconds, ':');
-    std::getline(time_stream, milliseconds, ':');
+    std::getline(time_stream, milliseconds);
 
     current_time = Timer(stoi(minutes), stoi(seconds), stoi(milliseconds));
 

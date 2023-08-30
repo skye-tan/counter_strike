@@ -29,8 +29,6 @@ public:
     Player(const std::string input_username = "no name", const int input_join_round = 0,
             Timer input_join_time = Timer(0, 0, 0));
 
-    void free_memory();
-
     /**
      * @brief Buy a new pistol type waepon for the player
      * 
@@ -162,14 +160,14 @@ private:
      * @brief A WeaponBundle object containing the player's weapons
      * 
      */
-    WeaponBundle* weapons;
+    WeaponBundle weapons;
 
     /**
      * @brief A Player_Statistics object responsible for mangement
      * of the player's statistic information
      * 
      */
-    PlayerStatistics* statistics;
+    PlayerStatistics statistics;
 
     static Timer join_dead_line;
     static Timer shop_dead_line;

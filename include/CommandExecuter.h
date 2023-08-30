@@ -20,12 +20,6 @@ public:
     CommandExecuter();
 
     /**
-     * @brief Destroy the Command_Executer object
-     * 
-     */
-    ~CommandExecuter();
-
-    /**
      * @brief Start reading and executing commands
      * 
      */
@@ -37,7 +31,7 @@ private:
      * @brief A pointer to a GameManager object for executing commands
      * 
      */
-    GameManager* game_manager;
+    GameManager game_manager;
 
 };
 
