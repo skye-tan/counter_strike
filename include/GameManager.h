@@ -2,6 +2,7 @@
 #include "AllExceptions.h"
 #include "Team.h"
 #include "Timer.h"
+#include <map>
 
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
@@ -102,17 +103,7 @@ public:
 
 private:
 
-    /**
-     * @brief A poniter to the terrorist's team
-     * 
-     */
-    Team* terrorist;
-
-    /**
-     * @brief A poniter to the counter_terrorist's team
-     * 
-     */
-    Team* counter_terrorist;
+    std::map<std::string, Team> teams;
 
     /**
      * @brief The number of current round
